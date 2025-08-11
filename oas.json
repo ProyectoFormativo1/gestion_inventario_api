@@ -1,0 +1,2531 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api/locacion": {
+      "post": {
+        "operationId": "LocacionController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLocacionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear una nueva locación",
+        "tags": [
+          "Locacion"
+        ]
+      },
+      "get": {
+        "operationId": "LocacionController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Locacion"
+        ]
+      }
+    },
+    "/api/locacion/{id}": {
+      "get": {
+        "operationId": "LocacionController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Locacion"
+        ]
+      },
+      "patch": {
+        "operationId": "LocacionController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateLocacionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Locacion"
+        ]
+      },
+      "delete": {
+        "operationId": "LocacionController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Locacion"
+        ]
+      }
+    },
+    "/api/centroformacion": {
+      "post": {
+        "operationId": "centroformacionController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCentroFormacionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo centro de formacion",
+        "tags": [
+          "centroformacion"
+        ]
+      },
+      "get": {
+        "operationId": "centroformacionController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "centroformacion"
+        ]
+      }
+    },
+    "/api/centroformacion/{id}": {
+      "get": {
+        "operationId": "centroformacionController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "centroformacion"
+        ]
+      },
+      "patch": {
+        "operationId": "centroformacionController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCentroFormacionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "centroformacion"
+        ]
+      },
+      "delete": {
+        "operationId": "centroformacionController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "centroformacion"
+        ]
+      }
+    },
+    "/api/sedes": {
+      "post": {
+        "operationId": "SedesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSedeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear una nueva sede",
+        "tags": [
+          "Sedes"
+        ]
+      },
+      "get": {
+        "operationId": "SedesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Sedes"
+        ]
+      }
+    },
+    "/api/sedes/{id}": {
+      "get": {
+        "operationId": "SedesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Sedes"
+        ]
+      },
+      "patch": {
+        "operationId": "SedesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSedeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Sedes"
+        ]
+      },
+      "delete": {
+        "operationId": "SedesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Sedes"
+        ]
+      }
+    },
+    "/api/areas": {
+      "post": {
+        "operationId": "AreasController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAreaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear una nueva área",
+        "tags": [
+          "Areas"
+        ]
+      },
+      "get": {
+        "operationId": "AreasController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Areas"
+        ]
+      }
+    },
+    "/api/areas/{id}": {
+      "get": {
+        "operationId": "AreasController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Areas"
+        ]
+      },
+      "patch": {
+        "operationId": "AreasController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAreaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Areas"
+        ]
+      },
+      "delete": {
+        "operationId": "AreasController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Areas"
+        ]
+      }
+    },
+    "/api/programas": {
+      "post": {
+        "operationId": "ProgramasController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProgramaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo programa",
+        "tags": [
+          "Programas"
+        ]
+      },
+      "get": {
+        "operationId": "ProgramasController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Programas"
+        ]
+      }
+    },
+    "/api/programas/{id}": {
+      "get": {
+        "operationId": "ProgramasController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Programas"
+        ]
+      },
+      "patch": {
+        "operationId": "ProgramasController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProgramaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Programas"
+        ]
+      },
+      "delete": {
+        "operationId": "ProgramasController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Programas"
+        ]
+      }
+    },
+    "/api/ambientes": {
+      "post": {
+        "operationId": "AmbientesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAmbienteDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo ambiente",
+        "tags": [
+          "Ambientes"
+        ]
+      },
+      "get": {
+        "operationId": "AmbientesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Ambientes"
+        ]
+      }
+    },
+    "/api/ambientes/{id}": {
+      "get": {
+        "operationId": "AmbientesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Ambientes"
+        ]
+      },
+      "patch": {
+        "operationId": "AmbientesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAmbienteDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Ambientes"
+        ]
+      },
+      "delete": {
+        "operationId": "AmbientesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Ambientes"
+        ]
+      }
+    },
+    "/api/fichas": {
+      "post": {
+        "operationId": "FichasController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFichaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear una nueva ficha",
+        "tags": [
+          "Fichas"
+        ]
+      },
+      "get": {
+        "operationId": "FichasController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Fichas"
+        ]
+      }
+    },
+    "/api/fichas/{id}": {
+      "get": {
+        "operationId": "FichasController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Fichas"
+        ]
+      },
+      "patch": {
+        "operationId": "FichasController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFichaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Fichas"
+        ]
+      },
+      "delete": {
+        "operationId": "FichasController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Fichas"
+        ]
+      }
+    },
+    "/api/bodega": {
+      "post": {
+        "operationId": "BodegasController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBodegaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear una nueva bodega",
+        "tags": [
+          "Bodegas"
+        ]
+      },
+      "get": {
+        "operationId": "BodegasController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Bodegas"
+        ]
+      }
+    },
+    "/api/bodega/{id}": {
+      "get": {
+        "operationId": "BodegasController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Bodegas"
+        ]
+      },
+      "patch": {
+        "operationId": "BodegasController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBodegaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Bodegas"
+        ]
+      },
+      "delete": {
+        "operationId": "BodegasController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Bodegas"
+        ]
+      }
+    },
+    "/api/materiales": {
+      "post": {
+        "operationId": "MaterialesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMaterialDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Materiales"
+        ]
+      },
+      "get": {
+        "operationId": "MaterialesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Materiales"
+        ]
+      }
+    },
+    "/api/materiales/{id}": {
+      "get": {
+        "operationId": "MaterialesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Materiales"
+        ]
+      },
+      "patch": {
+        "operationId": "MaterialesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMaterialeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Materiales"
+        ]
+      },
+      "delete": {
+        "operationId": "MaterialesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Materiales"
+        ]
+      }
+    },
+    "/api/permisos": {
+      "post": {
+        "operationId": "PermisosController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePermisoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo permiso",
+        "tags": [
+          "Permisos"
+        ]
+      },
+      "get": {
+        "operationId": "PermisosController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Permisos"
+        ]
+      }
+    },
+    "/api/permisos/{id}": {
+      "get": {
+        "operationId": "PermisosController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Permisos"
+        ]
+      },
+      "patch": {
+        "operationId": "PermisosController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePermisoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Permisos"
+        ]
+      },
+      "delete": {
+        "operationId": "PermisosController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Permisos"
+        ]
+      }
+    },
+    "/api/cargo": {
+      "post": {
+        "operationId": "CargoController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCargoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo cargo",
+        "tags": [
+          "Cargo"
+        ]
+      },
+      "get": {
+        "operationId": "CargoController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Cargo"
+        ]
+      }
+    },
+    "/api/cargo/{id}": {
+      "get": {
+        "operationId": "CargoController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Cargo"
+        ]
+      },
+      "patch": {
+        "operationId": "CargoController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCargoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Cargo"
+        ]
+      },
+      "delete": {
+        "operationId": "CargoController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Cargo"
+        ]
+      }
+    },
+    "/api/roles": {
+      "post": {
+        "operationId": "RolesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo rol",
+        "tags": [
+          "Roles"
+        ]
+      },
+      "get": {
+        "operationId": "RolesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Roles"
+        ]
+      }
+    },
+    "/api/roles/{id}": {
+      "get": {
+        "operationId": "RolesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Roles"
+        ]
+      },
+      "patch": {
+        "operationId": "RolesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Roles"
+        ]
+      },
+      "delete": {
+        "operationId": "RolesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Roles"
+        ]
+      }
+    },
+    "/api/rol-permisos": {
+      "post": {
+        "operationId": "RolPermisosController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRolPermisoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "RolPermisos"
+        ]
+      },
+      "get": {
+        "operationId": "RolPermisosController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "RolPermisos"
+        ]
+      }
+    },
+    "/api/rol-permisos/{id}": {
+      "get": {
+        "operationId": "RolPermisosController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "RolPermisos"
+        ]
+      },
+      "patch": {
+        "operationId": "RolPermisosController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRolPermisoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "RolPermisos"
+        ]
+      },
+      "delete": {
+        "operationId": "RolPermisosController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "RolPermisos"
+        ]
+      }
+    },
+    "/api/usuarios": {
+      "post": {
+        "operationId": "UsuariosController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo usuario",
+        "tags": [
+          "Usuarios"
+        ]
+      },
+      "get": {
+        "operationId": "UsuariosController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Listar todos los usuarios",
+        "tags": [
+          "Usuarios"
+        ]
+      }
+    },
+    "/api/usuarios/{id}": {
+      "get": {
+        "operationId": "UsuariosController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Obtener un usuario por ID",
+        "tags": [
+          "Usuarios"
+        ]
+      },
+      "patch": {
+        "operationId": "UsuariosController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Actualizar un usuario por ID",
+        "tags": [
+          "Usuarios"
+        ]
+      },
+      "delete": {
+        "operationId": "UsuariosController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Eliminar un usuario por ID",
+        "tags": [
+          "Usuarios"
+        ]
+      }
+    },
+    "/api/movimientos": {
+      "post": {
+        "operationId": "MovimientosController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMovimientoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo movimiento",
+        "tags": [
+          "Movimientos"
+        ]
+      },
+      "get": {
+        "operationId": "MovimientosController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Movimientos"
+        ]
+      }
+    },
+    "/api/movimientos/{id}": {
+      "get": {
+        "operationId": "MovimientosController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Movimientos"
+        ]
+      },
+      "patch": {
+        "operationId": "MovimientosController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateMovimientoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Movimientos"
+        ]
+      },
+      "delete": {
+        "operationId": "MovimientosController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Movimientos"
+        ]
+      }
+    },
+    "/api/unidad_medida": {
+      "post": {
+        "operationId": "UnidadMedidaController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUnidadMedidaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear una nueva unidad de medida",
+        "tags": [
+          "UnidadMedida"
+        ]
+      },
+      "get": {
+        "operationId": "UnidadMedidaController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "UnidadMedida"
+        ]
+      }
+    },
+    "/api/unidad_medida/{id}": {
+      "get": {
+        "operationId": "UnidadMedidaController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "UnidadMedida"
+        ]
+      },
+      "patch": {
+        "operationId": "UnidadMedidaController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUnidadMedidaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "UnidadMedida"
+        ]
+      },
+      "delete": {
+        "operationId": "UnidadMedidaController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "UnidadMedida"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Beep Auth",
+    "description": "Beep Auth APIs",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "CreateLocacionDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la locación",
+            "example": "Pitalito"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de locación",
+            "example": "ciudad"
+          },
+          "codigoPostal": {
+            "type": "string",
+            "description": "codigo postal de la locación",
+            "example": "40001"
+          },
+          "parentId": {
+            "type": "number",
+            "description": "Padreid de la locación",
+            "example": 1
+          }
+        },
+        "required": [
+          "nombre",
+          "tipo",
+          "codigoPostal",
+          "parentId"
+        ]
+      },
+      "UpdateLocacionDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la locación",
+            "example": "Pitalito"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de locación",
+            "example": "ciudad"
+          },
+          "codigoPostal": {
+            "type": "string",
+            "description": "codigo postal de la locación",
+            "example": "40001"
+          },
+          "parentId": {
+            "type": "number",
+            "description": "Padreid de la locación",
+            "example": 1
+          }
+        }
+      },
+      "CreateCentroFormacionDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del centro de formacion",
+            "example": "Centro de Gestion y Desarrollo"
+          },
+          "locacionId": {
+            "type": "number",
+            "description": "Locacion del centro de formacion",
+            "example": 2
+          }
+        },
+        "required": [
+          "nombre",
+          "locacionId"
+        ]
+      },
+      "UpdateCentroFormacionDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del centro de formacion",
+            "example": "Centro de Gestion y Desarrollo"
+          },
+          "locacionId": {
+            "type": "number",
+            "description": "Locacion del centro de formacion",
+            "example": 2
+          }
+        }
+      },
+      "CreateSedeDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la sede",
+            "example": "Yamboro"
+          },
+          "centroFormacionId": {
+            "type": "number",
+            "description": "centro de formación al que pertenece la sede",
+            "example": 1
+          }
+        },
+        "required": [
+          "nombre",
+          "centroFormacionId"
+        ]
+      },
+      "UpdateSedeDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la sede",
+            "example": "Yamboro"
+          },
+          "centroFormacionId": {
+            "type": "number",
+            "description": "centro de formación al que pertenece la sede",
+            "example": 1
+          }
+        }
+      },
+      "CreateAreaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del area",
+            "example": "TIC"
+          },
+          "sedeId": {
+            "type": "number",
+            "description": "Id de la sede a la que pertenece el area",
+            "example": 3
+          }
+        },
+        "required": [
+          "nombre",
+          "sedeId"
+        ]
+      },
+      "UpdateAreaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del area",
+            "example": "TIC"
+          },
+          "sedeId": {
+            "type": "number",
+            "description": "Id de la sede a la que pertenece el area",
+            "example": 3
+          }
+        }
+      },
+      "CreateProgramaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del programa",
+            "example": "Ingeniería de Sistemas"
+          },
+          "areaId": {
+            "type": "number",
+            "description": "Id del área a la que pertenece el programa",
+            "example": 5
+          }
+        },
+        "required": [
+          "nombre",
+          "areaId"
+        ]
+      },
+      "UpdateProgramaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del programa",
+            "example": "Ingeniería de Sistemas"
+          },
+          "areaId": {
+            "type": "number",
+            "description": "Id del área a la que pertenece el programa",
+            "example": 5
+          }
+        }
+      },
+      "CreateAmbienteDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del ambiente",
+            "example": "Y151"
+          },
+          "fichaId": {
+            "type": "number",
+            "description": "Id de la ficha a la que pertenece el ambiente",
+            "example": 3
+          }
+        },
+        "required": [
+          "nombre",
+          "fichaId"
+        ]
+      },
+      "UpdateAmbienteDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del ambiente",
+            "example": "Y151"
+          },
+          "fichaId": {
+            "type": "number",
+            "description": "Id de la ficha a la que pertenece el ambiente",
+            "example": 3
+          }
+        }
+      },
+      "CreateFichaDto": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "description": "Código de la ficha",
+            "example": "F12345"
+          },
+          "programaId": {
+            "type": "number",
+            "description": "ID del programa asociado",
+            "example": 1
+          }
+        },
+        "required": [
+          "codigo",
+          "programaId"
+        ]
+      },
+      "UpdateFichaDto": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "description": "Código de la ficha",
+            "example": "F12345"
+          },
+          "programaId": {
+            "type": "number",
+            "description": "ID del programa asociado",
+            "example": 1
+          }
+        }
+      },
+      "CreateBodegaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la bodega",
+            "example": "TIC"
+          },
+          "areaId": {
+            "type": "number",
+            "description": "Id del area a la que pertenece la bodega",
+            "example": 5
+          }
+        },
+        "required": [
+          "nombre",
+          "areaId"
+        ]
+      },
+      "UpdateBodegaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la bodega",
+            "example": "TIC"
+          },
+          "areaId": {
+            "type": "number",
+            "description": "Id del area a la que pertenece la bodega",
+            "example": 5
+          }
+        }
+      },
+      "CreateMaterialDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del material",
+            "example": "Cemento gris Portland"
+          },
+          "stok": {
+            "type": "number",
+            "description": "Cantidad en stock",
+            "example": 150
+          },
+          "numero_contrato": {
+            "type": "string",
+            "description": "Número de contrato relacionado al material",
+            "example": "CT-2025-001"
+          },
+          "fecha_vencimiento": {
+            "type": "string",
+            "description": "Fecha de vencimiento del material",
+            "example": "2025-12-31T00:00:00Z"
+          },
+          "fecha_vigencia": {
+            "type": "string",
+            "description": "Fecha de vigencia del material",
+            "example": "2025-12-31T00:00:00Z"
+          },
+          "codigo_sena": {
+            "type": "string",
+            "description": "Código SENA del material",
+            "example": "SENA12345"
+          },
+          "codigo_unspsc": {
+            "type": "string",
+            "description": "Código UNSPSC del material",
+            "example": "30111506"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de material",
+            "example": "consumible"
+          },
+          "bodega_id": {
+            "type": "number",
+            "description": "ID de la bodega donde se almacena",
+            "example": 2
+          },
+          "unidad_medida_id": {
+            "type": "number",
+            "description": "ID de la unidad de medida",
+            "example": 1
+          }
+        },
+        "required": [
+          "nombre",
+          "stok",
+          "numero_contrato",
+          "codigo_sena",
+          "codigo_unspsc",
+          "tipo",
+          "bodega_id",
+          "unidad_medida_id"
+        ]
+      },
+      "UpdateMaterialeDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del material",
+            "example": "Cemento gris Portland"
+          },
+          "stok": {
+            "type": "number",
+            "description": "Cantidad en stock",
+            "example": 150
+          },
+          "numero_contrato": {
+            "type": "string",
+            "description": "Número de contrato relacionado al material",
+            "example": "CT-2025-001"
+          },
+          "fecha_vencimiento": {
+            "type": "string",
+            "description": "Fecha de vencimiento del material",
+            "example": "2025-12-31T00:00:00Z"
+          },
+          "fecha_vigencia": {
+            "type": "string",
+            "description": "Fecha de vigencia del material",
+            "example": "2025-12-31T00:00:00Z"
+          },
+          "codigo_sena": {
+            "type": "string",
+            "description": "Código SENA del material",
+            "example": "SENA12345"
+          },
+          "codigo_unspsc": {
+            "type": "string",
+            "description": "Código UNSPSC del material",
+            "example": "30111506"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de material",
+            "example": "consumible"
+          },
+          "bodega_id": {
+            "type": "number",
+            "description": "ID de la bodega donde se almacena",
+            "example": 2
+          },
+          "unidad_medida_id": {
+            "type": "number",
+            "description": "ID de la unidad de medida",
+            "example": 1
+          }
+        }
+      },
+      "CreatePermisoDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del permiso",
+            "example": "Acceso a inventario"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del permiso",
+            "example": "Permiso para acceder a la gestión de inventario"
+          }
+        },
+        "required": [
+          "nombre",
+          "descripcion"
+        ]
+      },
+      "UpdatePermisoDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del permiso",
+            "example": "Acceso a inventario"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del permiso",
+            "example": "Permiso para acceder a la gestión de inventario"
+          }
+        }
+      },
+      "CreateCargoDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del cargo",
+            "example": "Gerente de TIC"
+          }
+        },
+        "required": [
+          "nombre"
+        ]
+      },
+      "UpdateCargoDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del cargo",
+            "example": "Gerente de TIC"
+          }
+        }
+      },
+      "CreateRoleDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del rol",
+            "example": "administrador"
+          },
+          "codigo": {
+            "type": "string",
+            "description": "Codigo del rol",
+            "example": "ADMIN"
+          }
+        },
+        "required": [
+          "nombre",
+          "codigo"
+        ]
+      },
+      "UpdateRoleDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del rol",
+            "example": "administrador"
+          },
+          "codigo": {
+            "type": "string",
+            "description": "Codigo del rol",
+            "example": "ADMIN"
+          }
+        }
+      },
+      "CreateRolPermisoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "UpdateRolPermisoDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateUsuarioDto": {
+        "type": "object",
+        "properties": {
+          "nombres": {
+            "type": "string",
+            "description": "Nombres del usuario",
+            "example": "Daniela"
+          },
+          "apellidos": {
+            "type": "string",
+            "description": "Apellidos del usuario",
+            "example": "Gómez Pérez"
+          },
+          "correo": {
+            "type": "string",
+            "description": "Email del usuario",
+            "example": "daniel@gmail.com"
+          },
+          "contrasena": {
+            "type": "string",
+            "description": "Contraseña del usuario",
+            "example": "password123"
+          },
+          "cargoId": {
+            "type": "number",
+            "description": "ID del cargo asociado al usuario",
+            "example": 1
+          },
+          "rol_id": {
+            "type": "number",
+            "description": "ID del rol asociado al usuario",
+            "example": 1
+          }
+        },
+        "required": [
+          "nombres",
+          "apellidos",
+          "correo",
+          "contrasena",
+          "cargoId",
+          "rol_id"
+        ]
+      },
+      "UpdateUsuarioDto": {
+        "type": "object",
+        "properties": {
+          "nombres": {
+            "type": "string",
+            "description": "Nombres del usuario",
+            "example": "Daniela"
+          },
+          "apellidos": {
+            "type": "string",
+            "description": "Apellidos del usuario",
+            "example": "Gómez Pérez"
+          },
+          "correo": {
+            "type": "string",
+            "description": "Email del usuario",
+            "example": "daniel@gmail.com"
+          },
+          "contrasena": {
+            "type": "string",
+            "description": "Contraseña del usuario",
+            "example": "password123"
+          },
+          "cargoId": {
+            "type": "number",
+            "description": "ID del cargo asociado al usuario",
+            "example": 1
+          },
+          "rol_id": {
+            "type": "number",
+            "description": "ID del rol asociado al usuario",
+            "example": 1
+          }
+        }
+      },
+      "CreateMovimientoDto": {
+        "type": "object",
+        "properties": {
+          "cantidad": {
+            "type": "number",
+            "description": "Cantidad del material en el movimiento",
+            "example": 10
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de movimiento (entrada o salida)",
+            "example": "entrada"
+          },
+          "observaciones": {
+            "type": "string",
+            "description": "Observaciones adicionales del movimiento",
+            "example": "Ingreso por compra directa"
+          },
+          "materialId": {
+            "type": "number",
+            "description": "ID del material asociado",
+            "example": 3
+          },
+          "responsableId": {
+            "type": "number",
+            "description": "ID del responsable en la base de datos",
+            "example": 1
+          }
+        },
+        "required": [
+          "cantidad",
+          "tipo",
+          "observaciones",
+          "materialId",
+          "responsableId"
+        ]
+      },
+      "UpdateMovimientoDto": {
+        "type": "object",
+        "properties": {
+          "cantidad": {
+            "type": "number",
+            "description": "Cantidad del material en el movimiento",
+            "example": 10
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de movimiento (entrada o salida)",
+            "example": "entrada"
+          },
+          "observaciones": {
+            "type": "string",
+            "description": "Observaciones adicionales del movimiento",
+            "example": "Ingreso por compra directa"
+          },
+          "materialId": {
+            "type": "number",
+            "description": "ID del material asociado",
+            "example": 3
+          },
+          "responsableId": {
+            "type": "number",
+            "description": "ID del responsable en la base de datos",
+            "example": 1
+          }
+        }
+      },
+      "CreateUnidadMedidaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la unidad de medida",
+            "example": "Metro"
+          },
+          "simbolo": {
+            "type": "string",
+            "description": "Símbolo de la unidad de medida",
+            "example": "m"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de unidad de medida",
+            "example": "Longitud"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción adicional de la unidad de medida",
+            "example": "Unidad utilizada para medir distancias"
+          }
+        },
+        "required": [
+          "nombre",
+          "simbolo",
+          "tipo"
+        ]
+      },
+      "UpdateUnidadMedidaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la unidad de medida",
+            "example": "Metro"
+          },
+          "simbolo": {
+            "type": "string",
+            "description": "Símbolo de la unidad de medida",
+            "example": "m"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "Tipo de unidad de medida",
+            "example": "Longitud"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción adicional de la unidad de medida",
+            "example": "Unidad utilizada para medir distancias"
+          }
+        }
+      }
+    }
+  }
+}
