@@ -24,4 +24,5 @@ export class Usuario {
   cargoId: number;
   @Column({ name: 'rol_id' })
   rol_id: number;
+  
 }

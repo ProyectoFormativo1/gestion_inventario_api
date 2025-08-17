@@ -23,6 +23,7 @@ import { UsuariosModule } from './features/usuarios/usuarios.module';
 // Operations modules
 import { MovimientosModule } from './features/movimientos/movimientos.module';
 import { UnidadMedidaModule } from './features/unidad-medida/unidad-medida.module';
+import { AuthModule } from './features/auth/auth.module';
 
 @Module({
   imports: [
@@ -47,6 +48,8 @@ import { UnidadMedidaModule } from './features/unidad-medida/unidad-medida.modul
     RolesModule,
     RolPermisosModule,
     UsuariosModule,
+    AuthModule,
+
 
     // Operations
     MovimientosModule,

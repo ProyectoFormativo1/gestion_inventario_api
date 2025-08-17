@@ -1,10 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus, UseGuards } from '@nestjs/common';
 import { LocacionService } from './locacion.service';
 import { CreateLocacionDto } from './dto/create-locacion.dto';
 import { UpdateLocacionDto } from './dto/update-locacion.dto';
 import { ApiOperation } from '@nestjs/swagger';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('locacion')
+@UseGuards(AuthGuard)
 export class LocacionController {
   constructor(private readonly locacionService: LocacionService) {}
 

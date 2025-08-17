@@ -113,6 +113,146 @@
         ]
       }
     },
+    "/api/auth/login": {
+      "post": {
+        "operationId": "AuthController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/usuarios": {
+      "post": {
+        "operationId": "UsuariosController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo usuario",
+        "tags": [
+          "Usuarios"
+        ]
+      },
+      "get": {
+        "operationId": "UsuariosController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Listar todos los usuarios",
+        "tags": [
+          "Usuarios"
+        ]
+      }
+    },
+    "/api/usuarios/{id}": {
+      "get": {
+        "operationId": "UsuariosController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Obtener un usuario por ID",
+        "tags": [
+          "Usuarios"
+        ]
+      },
+      "patch": {
+        "operationId": "UsuariosController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateUsuarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Actualizar un usuario por ID",
+        "tags": [
+          "Usuarios"
+        ]
+      },
+      "delete": {
+        "operationId": "UsuariosController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Eliminar un usuario por ID",
+        "tags": [
+          "Usuarios"
+        ]
+      }
+    },
     "/api/centroformacion": {
       "post": {
         "operationId": "centroformacionController_create",
@@ -1455,122 +1595,6 @@
         ]
       }
     },
-    "/api/usuarios": {
-      "post": {
-        "operationId": "UsuariosController_create",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUsuarioDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "summary": "Crear un nuevo usuario",
-        "tags": [
-          "Usuarios"
-        ]
-      },
-      "get": {
-        "operationId": "UsuariosController_findAll",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "summary": "Listar todos los usuarios",
-        "tags": [
-          "Usuarios"
-        ]
-      }
-    },
-    "/api/usuarios/{id}": {
-      "get": {
-        "operationId": "UsuariosController_findOne",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "summary": "Obtener un usuario por ID",
-        "tags": [
-          "Usuarios"
-        ]
-      },
-      "patch": {
-        "operationId": "UsuariosController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUsuarioDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "summary": "Actualizar un usuario por ID",
-        "tags": [
-          "Usuarios"
-        ]
-      },
-      "delete": {
-        "operationId": "UsuariosController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "summary": "Eliminar un usuario por ID",
-        "tags": [
-          "Usuarios"
-        ]
-      }
-    },
     "/api/movimientos": {
       "post": {
         "operationId": "MovimientosController_create",
@@ -1865,6 +1889,103 @@
           "parentId": {
             "type": "number",
             "description": "Padreid de la locación",
+            "example": 1
+          }
+        }
+      },
+      "LoginRequestDto": {
+        "type": "object",
+        "properties": {
+          "correo": {
+            "type": "string",
+            "description": "Email del usuario",
+            "example": "daniel@gmail.com"
+          },
+          "contrasena": {
+            "type": "string",
+            "description": "Contraseña del usuario",
+            "example": "password123"
+          }
+        },
+        "required": [
+          "correo",
+          "contrasena"
+        ]
+      },
+      "CreateUsuarioDto": {
+        "type": "object",
+        "properties": {
+          "nombres": {
+            "type": "string",
+            "description": "Nombres del usuario",
+            "example": "Daniela"
+          },
+          "apellidos": {
+            "type": "string",
+            "description": "Apellidos del usuario",
+            "example": "Gómez Pérez"
+          },
+          "correo": {
+            "type": "string",
+            "description": "Email del usuario",
+            "example": "daniel@gmail.com"
+          },
+          "contrasena": {
+            "type": "string",
+            "description": "Contraseña del usuario",
+            "example": "password123"
+          },
+          "cargoId": {
+            "type": "number",
+            "description": "ID del cargo asociado al usuario",
+            "example": 1
+          },
+          "rol_id": {
+            "type": "number",
+            "description": "ID del rol asociado al usuario",
+            "example": 1
+          }
+        },
+        "required": [
+          "nombres",
+          "apellidos",
+          "correo",
+          "contrasena",
+          "cargoId",
+          "rol_id"
+        ]
+      },
+      "UpdateUsuarioDto": {
+        "type": "object",
+        "properties": {
+          "nombres": {
+            "type": "string",
+            "description": "Nombres del usuario",
+            "example": "Daniela"
+          },
+          "apellidos": {
+            "type": "string",
+            "description": "Apellidos del usuario",
+            "example": "Gómez Pérez"
+          },
+          "correo": {
+            "type": "string",
+            "description": "Email del usuario",
+            "example": "daniel@gmail.com"
+          },
+          "contrasena": {
+            "type": "string",
+            "description": "Contraseña del usuario",
+            "example": "password123"
+          },
+          "cargoId": {
+            "type": "number",
+            "description": "ID del cargo asociado al usuario",
+            "example": 1
+          },
+          "rol_id": {
+            "type": "number",
+            "description": "ID del rol asociado al usuario",
             "example": 1
           }
         }
@@ -2325,84 +2446,6 @@
       "UpdateRolPermisoDto": {
         "type": "object",
         "properties": {}
-      },
-      "CreateUsuarioDto": {
-        "type": "object",
-        "properties": {
-          "nombres": {
-            "type": "string",
-            "description": "Nombres del usuario",
-            "example": "Daniela"
-          },
-          "apellidos": {
-            "type": "string",
-            "description": "Apellidos del usuario",
-            "example": "Gómez Pérez"
-          },
-          "correo": {
-            "type": "string",
-            "description": "Email del usuario",
-            "example": "daniel@gmail.com"
-          },
-          "contrasena": {
-            "type": "string",
-            "description": "Contraseña del usuario",
-            "example": "password123"
-          },
-          "cargoId": {
-            "type": "number",
-            "description": "ID del cargo asociado al usuario",
-            "example": 1
-          },
-          "rol_id": {
-            "type": "number",
-            "description": "ID del rol asociado al usuario",
-            "example": 1
-          }
-        },
-        "required": [
-          "nombres",
-          "apellidos",
-          "correo",
-          "contrasena",
-          "cargoId",
-          "rol_id"
-        ]
-      },
-      "UpdateUsuarioDto": {
-        "type": "object",
-        "properties": {
-          "nombres": {
-            "type": "string",
-            "description": "Nombres del usuario",
-            "example": "Daniela"
-          },
-          "apellidos": {
-            "type": "string",
-            "description": "Apellidos del usuario",
-            "example": "Gómez Pérez"
-          },
-          "correo": {
-            "type": "string",
-            "description": "Email del usuario",
-            "example": "daniel@gmail.com"
-          },
-          "contrasena": {
-            "type": "string",
-            "description": "Contraseña del usuario",
-            "example": "password123"
-          },
-          "cargoId": {
-            "type": "number",
-            "description": "ID del cargo asociado al usuario",
-            "example": 1
-          },
-          "rol_id": {
-            "type": "number",
-            "description": "ID del rol asociado al usuario",
-            "example": 1
-          }
-        }
       },
       "CreateMovimientoDto": {
         "type": "object",

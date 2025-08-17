@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Usuario } from './entities/usuario.entity';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsuariosService {
@@ -13,9 +14,14 @@ export class UsuariosService {
   ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
+
+    const hashedContrasena = await bcrypt.hash(createUsuarioDto.contrasena, 10);
+
     const usuario = this.usuarioRepository.create({
       ...createUsuarioDto,
+      contrasena: hashedContrasena
     });
+
     return await this.usuarioRepository.save(usuario);
   }
 
@@ -31,7 +37,19 @@ export class UsuariosService {
     return usuario;
   }
 
+  async findByCorreo(correo: string): Promise<Usuario> {
+    const usuario = await this.usuarioRepository.findOne({ where: { correo } });
+    if (!usuario) {
+      throw new NotFoundException(`Usuario #${correo} not found`);
+    }
+    return usuario;
+  }
+
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto): Promise<Usuario> {
+    const { contrasena } = updateUsuarioDto;
+    if (contrasena) {
+      updateUsuarioDto.contrasena = await bcrypt.hash(contrasena);
+    }
     const usuario = await this.usuarioRepository.preload({
       id,
       ...updateUsuarioDto,
