@@ -2,11 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus
 import { LocacionService } from './locacion.service';
 import { CreateLocacionDto } from './dto/create-locacion.dto';
 import { UpdateLocacionDto } from './dto/update-locacion.dto';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('locacion')
 @UseGuards(AuthGuard)
+@ApiBearerAuth('authorization') 
 export class LocacionController {
   constructor(private readonly locacionService: LocacionService) {}
 

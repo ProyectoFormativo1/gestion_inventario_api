@@ -4,10 +4,17 @@ import { writeFileSync } from "fs";
 
 export function setupSwagger(app: INestApplication): void {
   const config = new DocumentBuilder()
-    .setTitle('Beep Auth')
-    .setDescription('Beep Auth APIs')
+    .setTitle('Gestion Inventario API')
+    .setDescription('Gestion Inventario APIs')
     .setVersion('1.0')
-    .addBearerAuth()
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+      'authorization', // Este nombre debe coincidir con el decorador @ApiBearerAuth() si lo usas
+    )           
     .build();
   const document = SwaggerModule.createDocument(app, config);
   // Exportar a un archivo JSON
