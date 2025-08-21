@@ -310,6 +310,31 @@
             "description": ""
           }
         },
+        "summary": "Devuelve todos los centros de formacion",
+        "tags": [
+          "centroformacion"
+        ]
+      }
+    },
+    "/api/centroformacion/locacion/{locacionId}": {
+      "get": {
+        "operationId": "centroformacionController_findAllByLocacion",
+        "parameters": [
+          {
+            "name": "locacionId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Devuelve todos los centros de formacion por locacion (ciudad)",
         "tags": [
           "centroformacion"
         ]

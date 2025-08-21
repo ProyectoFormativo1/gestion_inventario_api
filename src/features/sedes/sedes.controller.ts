@@ -19,7 +19,7 @@ export class SedesController {
   findAll() {
     return this.sedesService.findAll();
   }
-
+  
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.sedesService.findOne(+id);

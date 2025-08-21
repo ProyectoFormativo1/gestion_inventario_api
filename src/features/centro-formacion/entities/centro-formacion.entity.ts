@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Locacion } from 'src/features/locacion/entities/locacion.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 @Entity('centroformacion')
 export class CentroFormacion {
   @PrimaryGeneratedColumn()
@@ -9,4 +10,9 @@ export class CentroFormacion {
 
   @Column({ name: 'locacion_id', nullable: true })
   locacionId?: number;
+
+  // 👇 Relación con Locacion
+  @ManyToOne(() => Locacion, (locacion) => locacion.centros)
+  @JoinColumn({ name: 'locacion_id' }) // une con la FK
+  locacion: Locacion;
 }

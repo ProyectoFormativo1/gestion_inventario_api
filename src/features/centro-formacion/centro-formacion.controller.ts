@@ -16,8 +16,15 @@ export class centroformacionController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Devuelve todos los centros de formacion' })
   findAll() {
     return this.centroformacionService.findAll();
+  }
+
+  @ApiOperation({ summary: 'Devuelve todos los centros de formacion por locacion (ciudad)' })
+  @Get('locacion/:locacionId')
+  findAllByLocacion(@Param('locacionId') locacionId: number) {
+    return this.centroformacionService.findAllByLocacion(locacionId);
   }
 
   @Get(':id')
