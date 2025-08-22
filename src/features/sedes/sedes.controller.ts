@@ -19,6 +19,12 @@ export class SedesController {
   findAll() {
     return this.sedesService.findAll();
   }
+
+  @ApiOperation({ summary: 'Devuelve todos las sede  por centroFormacion' })
+  @Get('centroformacion/:centroFormacionId')
+  findAllByCentroFormacion(@Param('centroFormacionId') centroFormacionId: number) {
+    return this.sedesService.findAllByCentroFormacion(centroFormacionId);
+  }
   
   @Get(':id')
   findOne(@Param('id') id: string) {

@@ -10,10 +10,10 @@ import { ApiProperty } from '@nestjs/swagger';
         nombre: string;
 
         @ApiProperty({
-            description: 'Id del área a la que pertenece el programa',
-            example: 5,
+            description: 'Descripción del  programa',
+            example: 'desarrollo',
         })
-        @IsNumber()
-        areaId: number;
+        @IsString()
+        descripcion: string;
     }
 

@@ -1,5 +1,6 @@
 import { Locacion } from 'src/features/locacion/entities/locacion.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Sede } from 'src/features/sedes/entities/sede.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 @Entity('centroformacion')
 export class CentroFormacion {
   @PrimaryGeneratedColumn()
@@ -15,4 +16,8 @@ export class CentroFormacion {
   @ManyToOne(() => Locacion, (locacion) => locacion.centros)
   @JoinColumn({ name: 'locacion_id' }) // une con la FK
   locacion: Locacion;
+
+  // 👇 Relación con Sedes
+  @OneToMany(() => Sede, (sede) => sede.centroFormacion)
+  centros: Sede[];
 }

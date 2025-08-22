@@ -19,6 +19,11 @@ export class AreasController {
   findAll() {
     return this.areasService.findAll();
   }
+  @ApiOperation({ summary: 'Devuelve todas las áreas por sede' })
+  @Get('sede/:sedeId')
+  findAllBySedes(@Param('sedeId') sedeId: number) {
+    return this.areasService.findAllBySedes(sedeId);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

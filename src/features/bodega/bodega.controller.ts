@@ -20,6 +20,11 @@ export class BodegasController {
     return this.bodegasService.findAll();
   }
 
+  @Get('area/:areaId')
+  findAllByAreas(@Param('areaId') areaId: number) {
+    return this.bodegasService.findAllByAreas(areaId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.bodegasService.findOne(+id);

@@ -452,6 +452,30 @@
         ]
       }
     },
+    "/api/sedes/centroformacion/{centroFormacionId}": {
+      "get": {
+        "operationId": "SedesController_findAllByCentroFormacion",
+        "parameters": [
+          {
+            "name": "centroFormacionId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Devuelve todos las sede  por centroFormacion",
+        "tags": [
+          "Sedes"
+        ]
+      }
+    },
     "/api/sedes/{id}": {
       "get": {
         "operationId": "SedesController_findOne",
@@ -559,6 +583,30 @@
             "description": ""
           }
         },
+        "tags": [
+          "Areas"
+        ]
+      }
+    },
+    "/api/areas/sede/{sedeId}": {
+      "get": {
+        "operationId": "AreasController_findAllBySedes",
+        "parameters": [
+          {
+            "name": "sedeId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Devuelve todas las áreas por sede",
         "tags": [
           "Areas"
         ]
@@ -900,6 +948,29 @@
         ]
       }
     },
+    "/api/fichas/area/{areaId}": {
+      "get": {
+        "operationId": "FichasController_findAllByAreas",
+        "parameters": [
+          {
+            "name": "areaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Fichas"
+        ]
+      }
+    },
     "/api/fichas/{id}": {
       "get": {
         "operationId": "FichasController_findOne",
@@ -1002,6 +1073,29 @@
       "get": {
         "operationId": "BodegasController_findAll",
         "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Bodegas"
+        ]
+      }
+    },
+    "/api/bodega/area/{areaId}": {
+      "get": {
+        "operationId": "BodegasController_findAllByAreas",
+        "parameters": [
+          {
+            "name": "areaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": ""
@@ -2150,15 +2244,15 @@
             "description": "Nombre del programa",
             "example": "Ingeniería de Sistemas"
           },
-          "areaId": {
-            "type": "number",
-            "description": "Id del área a la que pertenece el programa",
-            "example": 5
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del  programa",
+            "example": "desarrollo"
           }
         },
         "required": [
           "nombre",
-          "areaId"
+          "descripcion"
         ]
       },
       "UpdateProgramaDto": {
@@ -2169,10 +2263,10 @@
             "description": "Nombre del programa",
             "example": "Ingeniería de Sistemas"
           },
-          "areaId": {
-            "type": "number",
-            "description": "Id del área a la que pertenece el programa",
-            "example": 5
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del  programa",
+            "example": "desarrollo"
           }
         }
       },
@@ -2222,11 +2316,17 @@
             "type": "number",
             "description": "ID del programa asociado",
             "example": 1
+          },
+          "areaId": {
+            "type": "number",
+            "description": "ID del área asociada",
+            "example": 1
           }
         },
         "required": [
           "codigo",
-          "programaId"
+          "programaId",
+          "areaId"
         ]
       },
       "UpdateFichaDto": {
@@ -2240,6 +2340,11 @@
           "programaId": {
             "type": "number",
             "description": "ID del programa asociado",
+            "example": 1
+          },
+          "areaId": {
+            "type": "number",
+            "description": "ID del área asociada",
             "example": 1
           }
         }

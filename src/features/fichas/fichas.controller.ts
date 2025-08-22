@@ -20,6 +20,11 @@ export class FichasController {
     return this.fichasService.findAll();
   }
 
+  @Get('area/:areaId')
+  findAllByAreas(@Param('areaId') areaId: number) {
+    return this.fichasService.findAllByAreas(areaId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.fichasService.findOne(+id);

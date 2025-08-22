@@ -16,5 +16,12 @@ export class CreateFichaDto {
     })
     @IsNumber()
     programaId: number;
+
+    @ApiProperty({
+        description: 'ID del área asociada',
+        example: 1,
+    })
+    @IsNumber()
+    areaId: number;
 }
 

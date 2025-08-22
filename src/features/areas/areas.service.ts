@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Area } from './entities/area.entity';
 import { CreateAreaDto } from './dto/create-area.dto';
 import { UpdateAreaDto } from './dto/update-area.dto';
+import { AreaDto } from './dto/area.dto';
 
 @Injectable()
 export class AreaService {
@@ -17,8 +18,49 @@ export class AreaService {
     return await this.AreaRepository.save(Area);
   }
 
-  async findAll(): Promise<Area[]> {
-    return await this.AreaRepository.find();
+  async findAll(): Promise<AreaDto[]> {
+    const result = await this.AreaRepository.find({
+      relations: [
+        'sede',
+        'sede.centroFormacion',
+        'sede.centroFormacion.locacion',
+      ],
+    });
+    return result.map((area) => {
+      return {
+        id: area.id,
+        nombre: area.nombre,
+        sedeId: area.sedeId,
+        sedeNombre: area.sede?.nombre || '',
+        centroFormacionId: area.sede.centroFormacion.id,
+        centroFormacionNombre: area.sede.centroFormacion?.nombre || '',
+        locacionId: area.sede.centroFormacion.locacion.id,
+        locacionNombre: area.sede.centroFormacion.locacion?.nombre || '',
+      };
+    });
+  }
+
+  async findAllBySedes(sedeId: number): Promise<AreaDto[]> {
+    const result = await this.AreaRepository.find({
+      where: { sedeId },
+      relations: [
+        'sede',
+        'sede.centroFormacion',
+        'sede.centroFormacion.locacion',
+      ],
+    });
+    return result.map((sede) => {
+      return {
+        id: sede.id,
+        nombre: sede.nombre,
+        sedeId: sede.sedeId,
+        sedeNombre: sede.sede?.nombre || '',
+        centroFormacionId: sede.sede.centroFormacion.id,
+        centroFormacionNombre: sede.sede.centroFormacion?.nombre || '',
+        locacionId: sede.sede.centroFormacion.locacion.id,
+        locacionNombre: sede.sede.centroFormacion.locacion?.nombre || '',
+      };
+    });
   }
 
   async findOne(id: number): Promise<Area> {

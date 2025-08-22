@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Ficha } from 'src/features/fichas/entities/ficha.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity('programas')
 export class Programa {
@@ -8,6 +9,11 @@ export class Programa {
     @Column()
     nombre: string;
 
-    @Column({ name: 'area_id' })
-    areaId: number;
+    @Column()
+    descripcion: string;
+
+
+    // 👇 Relación con Fichas
+    @OneToMany(() => Ficha, (ficha) => ficha.programa)
+    fichas: Ficha[];
 }

@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Sede } from './entities/sede.entity';
 import { CreateSedeDto } from './dto/create-sede.dto';
 import { UpdateSedeDto } from './dto/update-sede.dto';
+import { SedeDto } from './dto/sede.dto';
 
 @Injectable()
 export class SedeService {
@@ -17,9 +18,39 @@ export class SedeService {
     return await this.sedeRepository.save(sede);
   }
 
-  async findAll(): Promise<Sede[]> {
-    return await this.sedeRepository.find();
+  async findAll(): Promise<SedeDto[]> {
+    const result = await this.sedeRepository.find({
+      relations: ['centroFormacion', 'centroFormacion.locacion'],
+    });
+    return result.map((sede) => {
+      return {
+        id: sede.id,
+        nombre: sede.nombre,
+        centroFormacionId: sede.centroFormacion.id,
+        centroFormacionNombre: sede.centroFormacion?.nombre || '',
+        locacionId: sede.centroFormacion.locacion.id,
+        locacionNombre: sede.centroFormacion.locacion?.nombre || '',
+      };
+    });
   }
+
+
+  async findAllByCentroFormacion(centroFormacionId: number): Promise<SedeDto[]> {
+      const result = await this.sedeRepository.find({
+        where: { centroFormacionId },
+        relations: ['centroFormacion', 'centroFormacion.locacion'],
+      });
+      return result.map((sede) => {
+        return {
+          id: sede.id,
+          nombre: sede.nombre,
+          centroFormacionId: sede.centroFormacion.id,
+          centroFormacionNombre: sede.centroFormacion?.nombre || '',
+          locacionId: sede.centroFormacion.locacion.id,
+          locacionNombre: sede.centroFormacion.locacion?.nombre || '',
+        };
+      });
+    }
 
   async findOne(id: number): Promise<Sede> {
     const sede = await this.sedeRepository.findOne({ where: { id } });

@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Ficha } from './entities/ficha.entity';
 import { CreateFichaDto } from './dto/create-ficha.dto';
 import { UpdateFichaDto } from './dto/update-ficha.dto';
+import { FichaDto } from './dto/ficha.dto';
 
 @Injectable()
 export class FichaService {
@@ -19,8 +20,53 @@ export class FichaService {
   return await this.fichaRepository.save(ficha);
 }
 
-  async findAll(): Promise<Ficha[]> {
-    return await this.fichaRepository.find();
+  async findAll(): Promise<FichaDto[]> {
+     const result = await this.fichaRepository.find({
+       relations: [
+         'programa', 'area', 'area.sede', 'area.sede.centroFormacion', 'area.sede.centroFormacion.locacion'
+       ],
+    });
+    return result.map((ficha) => {
+      return {
+        id: ficha.id,
+        codigo: ficha.codigo,
+        programaId: ficha.programaId,
+        programaNombre: ficha.programa?.nombre || '',
+        areaId: ficha.areaId,
+        areaNombre: ficha.area.nombre || '',
+        sedeId: ficha.area.sedeId,
+        sedeNombre: ficha.area.sede?.nombre || '',
+        centroFormacionId: ficha.area.sede.centroFormacion.id,
+        centroFormacionNombre: ficha.area.sede.centroFormacion?.nombre || '',
+        locacionId: ficha.area.sede.centroFormacion.locacion.id,
+        locacionNombre: ficha.area.sede.centroFormacion.locacion?.nombre || '',
+      };
+    });
+  }
+
+  async findAllByAreas(areaId: number): Promise<FichaDto[]> {
+    const result = await this.fichaRepository.find({
+      where: { areaId },
+      relations: [
+        'programa', 'area', 'area.sede', 'area.sede.centroFormacion', 'area.sede.centroFormacion.locacion'
+      ],
+    });
+    return result.map((ficha) => {
+      return {
+        id: ficha.id,
+        codigo: ficha.codigo,
+        programaId: ficha.programaId,
+        programaNombre: ficha.programa?.nombre || '',
+        areaId: ficha.area.sedeId,
+        areaNombre: ficha.area.sede?.nombre || '',
+        sedeId: ficha.area.sedeId,
+        sedeNombre: ficha.area.sede?.nombre || '',
+        centroFormacionId: ficha.area.sede.centroFormacion.id,
+        centroFormacionNombre: ficha.area.sede.centroFormacion?.nombre || '',
+        locacionId: ficha.area.sede.centroFormacion.locacion.id,
+        locacionNombre: ficha.area.sede.centroFormacion.locacion?.nombre || '',
+      };
+    });
   }
 
   async findOne(id: number): Promise<Ficha> {

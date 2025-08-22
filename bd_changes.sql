@@ -30,3 +30,11 @@ ADD COLUMN tipo_movimiento_id bigint REFERENCES public.tipo_movimiento(id);
 
 ALTER TABLE public.tipo_movimiento
 ADD CONSTRAINT tipo_movimiento_codigo_tipo_key UNIQUE (codigo, tipo);
+
+
+
+--Cambios 21 Agosto 2025
+
+ALTER TABLE public.fichas ADD area_id int8 NULL;
+ALTER TABLE public.fichas ADD CONSTRAINT fichas_area_id_fkey FOREIGN KEY (area_id) REFERENCES areas(id);
+ALTER TABLE public.programas ADD descripcion varchar(50) NULL;
