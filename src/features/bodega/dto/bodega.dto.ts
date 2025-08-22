@@ -4,6 +4,17 @@ export class BodegaDto {
     description: 'Nombre de la bodega',
   })
   nombre: string;
+
+  @ApiProperty({
+    description: 'Descripcion de la bodega',
+  })
+  descripcion: string;
+
+  @ApiProperty({
+    description: 'Responsable de la bodega',
+  })
+  responsable: string;
+
   @ApiProperty({
     description: 'Id del area a la que pertenece la bodega',
   })

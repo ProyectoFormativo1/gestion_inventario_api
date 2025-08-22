@@ -26,6 +26,8 @@ export class BodegaService {
       return {
         id: bodega.id,
         nombre: bodega.nombre,
+        descripcion: bodega.descripcion,
+        responsable: bodega.responsable,
         areaId: bodega.areaId,
         areaNombre: bodega.area?.nombre || '',
         sedeId: bodega.area.sedeId,
@@ -52,6 +54,8 @@ export class BodegaService {
       return {
         id: bodega.id,
         nombre: bodega.nombre,
+        descripcion: bodega.descripcion,
+        responsable: bodega.responsable,
         areaId: bodega.area.id,
         areaNombre: bodega.area?.nombre || '',
         sedeId: bodega.area.sede.id,

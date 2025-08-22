@@ -9,6 +9,12 @@ export class Bodega {
     @Column()
     nombre: string;
 
+    @Column()
+    descripcion: string;
+
+    @Column()
+    responsable: string;
+
     @Column({ name: 'area_id'})
     areaId: number;
 
