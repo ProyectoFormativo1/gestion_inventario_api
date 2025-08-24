@@ -5,26 +5,37 @@ import { Ficha } from './entities/ficha.entity';
 import { CreateFichaDto } from './dto/create-ficha.dto';
 import { UpdateFichaDto } from './dto/update-ficha.dto';
 import { FichaDto } from './dto/ficha.dto';
+import { AmbientesService } from '../ambientes/ambientes.service';
 
 @Injectable()
 export class FichaService {
   constructor(
     @InjectRepository(Ficha)
     private readonly fichaRepository: Repository<Ficha>,
+    private readonly ambientesService: AmbientesService,
   ) {}
 
- async create(createFichaDto: CreateFichaDto): Promise<Ficha> {
-  const ficha = this.fichaRepository.create({
-    ...createFichaDto
-  });
-  return await this.fichaRepository.save(ficha);
-}
+  async create(createFichaDto: CreateFichaDto): Promise<Ficha> {
+    const findAmbiente = await this.ambientesService.findOne(createFichaDto.ambienteId);
+    
+    const ficha = this.fichaRepository.create({
+      ...createFichaDto,
+      areaId: findAmbiente?.areaId
+    });
+    return await this.fichaRepository.save(ficha);
+  }
 
   async findAll(): Promise<FichaDto[]> {
-     const result = await this.fichaRepository.find({
-       relations: [
-         'programa', 'area', 'area.sede', 'area.sede.centroFormacion', 'area.sede.centroFormacion.locacion'
-       ],
+    const result = await this.fichaRepository.find({
+      relations: [
+        'programa',
+        'area',
+        'ambiente',
+        'area.sede',
+        'area.sede.centroFormacion',
+        'area.sede.centroFormacion.locacion',
+        
+      ],
     });
     return result.map((ficha) => {
       return {
@@ -40,6 +51,9 @@ export class FichaService {
         centroFormacionNombre: ficha.area.sede.centroFormacion?.nombre || '',
         locacionId: ficha.area.sede.centroFormacion.locacion.id,
         locacionNombre: ficha.area.sede.centroFormacion.locacion?.nombre || '',
+        fechaCreacion: ficha.fechaCreacion.toISOString(),
+        ambienteId: ficha.ambienteId,
+        ambienteNombre: ficha.ambiente?.nombre || '',
       };
     });
   }
@@ -48,7 +62,11 @@ export class FichaService {
     const result = await this.fichaRepository.find({
       where: { areaId },
       relations: [
-        'programa', 'area', 'area.sede', 'area.sede.centroFormacion', 'area.sede.centroFormacion.locacion'
+        'programa',
+        'area',
+        'area.sede',
+        'area.sede.centroFormacion',
+        'area.sede.centroFormacion.locacion',
       ],
     });
     return result.map((ficha) => {
@@ -65,6 +83,9 @@ export class FichaService {
         centroFormacionNombre: ficha.area.sede.centroFormacion?.nombre || '',
         locacionId: ficha.area.sede.centroFormacion.locacion.id,
         locacionNombre: ficha.area.sede.centroFormacion.locacion?.nombre || '',
+        fechaCreacion: ficha.fechaCreacion.toISOString(),
+        ambienteId: ficha.ambienteId,
+        ambienteNombre: ficha.ambiente?.nombre || '',
       };
     });
   }
@@ -76,25 +97,30 @@ export class FichaService {
     }
     return ficha;
   }
-async update(id: number, updateFichaDto: UpdateFichaDto): Promise<Ficha> {
-  const ficha = await this.fichaRepository.preload({
-    id,
-    ...updateFichaDto,
-    codigo: updateFichaDto.codigo !== undefined 
-      ? String(updateFichaDto.codigo) 
-      : undefined,
-  });
-  if (!ficha) {
-    throw new NotFoundException(`Ficha #${id} not found`);
-  }
-  return await this.fichaRepository.save(ficha);
+  async update(id: number, updateFichaDto: UpdateFichaDto): Promise<Ficha> {
+    const ficha = await this.fichaRepository.preload({
+      id,
+      ...updateFichaDto,
+      codigo:
+        updateFichaDto.codigo !== undefined
+          ? String(updateFichaDto.codigo)
+          : undefined,
+    });
+    if (!ficha) {
+      throw new NotFoundException(`Ficha #${id} not found`);
+    }
 
-}
-async remove(id: number): Promise<void> {
-  const result = await this.fichaRepository.delete(id);
-  if (result.affected === 0) {
-    throw new NotFoundException(`Ficha #${id} not found`);
-  }
-}
+    const findAmbiente = await this.ambientesService.findOne(updateFichaDto.ambienteId ??0);
 
+    return await this.fichaRepository.save({
+      ...ficha,
+      areaId: findAmbiente?.areaId
+    });
+  }
+  async remove(id: number): Promise<void> {
+    const result = await this.fichaRepository.delete(id);
+    if (result.affected === 0) {
+      throw new NotFoundException(`Ficha #${id} not found`);
+    }
+  }
 }

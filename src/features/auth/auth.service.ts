@@ -33,6 +33,7 @@ export class AuthService {
     )
     return {
       token, expiresIn, user: {
+        fechaCreacion: usuario.fechacreacion.toISOString(),
         id: usuario.id,
         correo: usuario.correo,
         nombres: usuario.nombres,

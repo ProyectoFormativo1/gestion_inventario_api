@@ -9,15 +9,6 @@ export class CreateMovimientoDto {
   @IsNumber()
   cantidad: number;
 
-
-  @ApiProperty({
-    description: 'Tipo de movimiento (entrada o salida)',
-    example: 'entrada',
-  })
-  @IsString()
-  tipo: string;
-
-
   @ApiProperty({
     description: 'Observaciones adicionales del movimiento',
     example: 'Ingreso por compra directa',
@@ -38,4 +29,11 @@ export class CreateMovimientoDto {
   })
   @IsNumber()
   responsableId: number;
+
+  @ApiProperty({
+    description: 'ID del tipo de movimiento',
+    example: 2,
+  })
+  @IsNumber()
+  tipoMovimientoId: number;
 }

@@ -10,5 +10,6 @@ import { Ambiente } from './entities/ambiente.entity';
   ],
   controllers: [AmbientesController],
   providers: [AmbientesService],
+  exports: [AmbientesService]
 })
 export class AmbientesModule {}

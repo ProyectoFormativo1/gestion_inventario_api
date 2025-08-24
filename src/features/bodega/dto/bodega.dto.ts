@@ -54,4 +54,9 @@ export class BodegaDto {
     description: 'nombre centro de formación al que pertenece la sede',
   })
   centroFormacionNombre: string;
+
+  @ApiProperty({
+    description: 'Total de materiales en la bodega',
+  })
+  totalMateriales: number;
 }

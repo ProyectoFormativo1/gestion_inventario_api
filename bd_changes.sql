@@ -85,3 +85,20 @@ VALUES
 ('Unidad', 'und', 'Cantidad', 'Unidad de conteo o pieza'),
 ('Docena', 'doc', 'Cantidad', 'Equivale a 12 unidades'),
 ('Porcentaje', '%', 'Proporción', 'Parte en cien');
+
+
+---Cambios 23 Agosto 2025
+
+
+INSERT INTO public.tipo_movimiento (codigo, descripcion, tipo) VALUES
+('prestamo', 'Salida por prestamo', 'salida'),
+('baja', 'Salida por baja', 'salida'),
+('devolucion', 'Salida por devolucion', 'salida'),
+('compra', 'Entrada por compra', 'entrada'),
+('donacion', 'Entrada por donacion', 'entrada'),
+('remision', 'Entrada por remision', 'entrada'),
+('devolucion', 'Entrada por devolucion', 'entrada');
+
+
+ALTER TABLE public.salidas
+    ADD CONSTRAINT salidas_movimiento_id_unique UNIQUE (movimiento_id);

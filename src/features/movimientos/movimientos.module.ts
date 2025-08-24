@@ -10,5 +10,6 @@ import { Movimiento } from './entities/movimiento.entity';
   ],
   controllers: [MovimientosController],
   providers: [MovimientosService],
+  exports: [MovimientosService]
 })
 export class MovimientosModule {}

@@ -1359,6 +1359,42 @@
         ]
       }
     },
+    "/api/tipo-movimiento": {
+      "post": {
+        "operationId": "TipoMovimientoController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTipoMovimientoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TipoMovimiento"
+        ]
+      },
+      "get": {
+        "operationId": "TipoMovimientoController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "TipoMovimiento"
+        ]
+      }
+    },
     "/api/permisos": {
       "post": {
         "operationId": "PermisosController_create",
@@ -2029,6 +2065,20 @@
           "UnidadMedida"
         ]
       }
+    },
+    "/api/estadistica": {
+      "get": {
+        "operationId": "EstadisticaController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Estadistica"
+        ]
+      }
     }
   },
   "info": {
@@ -2151,7 +2201,7 @@
             "description": "ID del cargo asociado al usuario",
             "example": 1
           },
-          "rol_id": {
+          "rolId": {
             "type": "number",
             "description": "ID del rol asociado al usuario",
             "example": 1
@@ -2163,7 +2213,7 @@
           "correo",
           "contrasena",
           "cargoId",
-          "rol_id"
+          "rolId"
         ]
       },
       "UpdateUsuarioDto": {
@@ -2194,7 +2244,7 @@
             "description": "ID del cargo asociado al usuario",
             "example": 1
           },
-          "rol_id": {
+          "rolId": {
             "type": "number",
             "description": "ID del rol asociado al usuario",
             "example": 1
@@ -2384,16 +2434,16 @@
             "description": "ID del programa asociado",
             "example": 1
           },
-          "areaId": {
+          "ambienteId": {
             "type": "number",
-            "description": "ID del área asociada",
+            "description": "ID del ambiente",
             "example": 1
           }
         },
         "required": [
           "codigo",
           "programaId",
-          "areaId"
+          "ambienteId"
         ]
       },
       "UpdateFichaDto": {
@@ -2409,9 +2459,9 @@
             "description": "ID del programa asociado",
             "example": 1
           },
-          "areaId": {
+          "ambienteId": {
             "type": "number",
-            "description": "ID del área asociada",
+            "description": "ID del ambiente",
             "example": 1
           }
         }
@@ -2429,6 +2479,11 @@
             "description": "Descripción de la bodega",
             "example": "Bodega de Tecnologías de la Información y Comunicaciones"
           },
+          "responsable": {
+            "type": "string",
+            "description": "Responsable de la bodega",
+            "example": "Juan Pérez"
+          },
           "areaId": {
             "type": "number",
             "description": "Id del area a la que pertenece la bodega",
@@ -2438,6 +2493,7 @@
         "required": [
           "nombre",
           "descripcion",
+          "responsable",
           "areaId"
         ]
       },
@@ -2453,6 +2509,11 @@
             "type": "string",
             "description": "Descripción de la bodega",
             "example": "Bodega de Tecnologías de la Información y Comunicaciones"
+          },
+          "responsable": {
+            "type": "string",
+            "description": "Responsable de la bodega",
+            "example": "Juan Pérez"
           },
           "areaId": {
             "type": "number",
@@ -2581,6 +2642,31 @@
           }
         }
       },
+      "CreateTipoMovimientoDto": {
+        "type": "object",
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "example": "ENTRADA",
+            "description": "Código del tipo de movimiento"
+          },
+          "descripcion": {
+            "type": "string",
+            "example": "Entrada de productos",
+            "description": "Descripción del tipo de movimiento"
+          },
+          "tipo": {
+            "type": "string",
+            "example": "IN",
+            "description": "Tipo de movimiento (IN/OUT)"
+          }
+        },
+        "required": [
+          "codigo",
+          "descripcion",
+          "tipo"
+        ]
+      },
       "CreatePermisoDto": {
         "type": "object",
         "properties": {
@@ -2688,11 +2774,6 @@
             "description": "Cantidad del material en el movimiento",
             "example": 10
           },
-          "tipo": {
-            "type": "string",
-            "description": "Tipo de movimiento (entrada o salida)",
-            "example": "entrada"
-          },
           "observaciones": {
             "type": "string",
             "description": "Observaciones adicionales del movimiento",
@@ -2707,14 +2788,19 @@
             "type": "number",
             "description": "ID del responsable en la base de datos",
             "example": 1
+          },
+          "tipoMovimientoId": {
+            "type": "number",
+            "description": "ID del tipo de movimiento",
+            "example": 2
           }
         },
         "required": [
           "cantidad",
-          "tipo",
           "observaciones",
           "materialId",
-          "responsableId"
+          "responsableId",
+          "tipoMovimientoId"
         ]
       },
       "UpdateMovimientoDto": {
@@ -2725,11 +2811,6 @@
             "description": "Cantidad del material en el movimiento",
             "example": 10
           },
-          "tipo": {
-            "type": "string",
-            "description": "Tipo de movimiento (entrada o salida)",
-            "example": "entrada"
-          },
           "observaciones": {
             "type": "string",
             "description": "Observaciones adicionales del movimiento",
@@ -2744,6 +2825,11 @@
             "type": "number",
             "description": "ID del responsable en la base de datos",
             "example": 1
+          },
+          "tipoMovimientoId": {
+            "type": "number",
+            "description": "ID del tipo de movimiento",
+            "example": 2
           }
         }
       },

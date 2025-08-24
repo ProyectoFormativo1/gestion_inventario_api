@@ -8,7 +8,6 @@ export class CreateFichaDto {
     })
     @IsString()
     codigo: string;
-
     
     @ApiProperty({
         description: 'ID del programa asociado',
@@ -18,10 +17,10 @@ export class CreateFichaDto {
     programaId: number;
 
     @ApiProperty({
-        description: 'ID del área asociada',
+        description: 'ID del ambiente',
         example: 1,
     })
     @IsNumber()
-    areaId: number;
+    ambienteId: number;
 }
 

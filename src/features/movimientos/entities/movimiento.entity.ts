@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Material } from 'src/features/materiales/entities/materiale.entity';
+import { TipoMovimiento } from 'src/features/tipo-movimiento/entities/tipo-movimiento.entity';
+import { Usuario } from 'src/features/usuarios/entities/usuario.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn, ManyToOne } from 'typeorm';
 
 @Entity('movimientos')
 export class Movimiento {
@@ -16,10 +19,6 @@ export class Movimiento {
   })
   fecha: Date;
 
-
-  @Column()
-  tipo: string;
-
   @Column()
   observaciones: string;
 
@@ -28,4 +27,23 @@ export class Movimiento {
 
   @Column({ name: 'responsable_id' })
   responsableId: number;
+
+  @Column({ name: 'tipo_movimiento_id' })
+  tipoMovimientoId: number;
+
+  // 👇 Relación con Material
+  @ManyToOne(() => Material, (material) => material.movimientos)
+  @JoinColumn({ name: 'material_id' }) // une con la FK
+  material: Material;
+
+  // 👇 Relación con Usuario
+  @ManyToOne(() => Usuario, (usuario) => usuario.movimientos)
+  @JoinColumn({ name: 'responsable_id' }) // une con la FK
+  responsable: Usuario;
+
+  // 👇 Relación con Tipo de Movimiento
+  @ManyToOne(() => TipoMovimiento, (tipoMovimiento) => tipoMovimiento.movimientos)
+  @JoinColumn({ name: 'tipo_movimiento_id' }) // une con la FK
+  tipoMovimiento: TipoMovimiento;
+
 }

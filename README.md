@@ -133,6 +133,7 @@ npm install @nestjs/config
 ```
 
 
+
 Configurar JWT y BCryp
 
 npm install @nestjs/jwt bcrypt --save

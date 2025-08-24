@@ -20,7 +20,12 @@ export class BodegaService {
 
   async findAll(): Promise<BodegaDto[]> {
     const result = await this.bodegaRepository.find({
-      relations: ['area', 'area.sede', 'area.sede.centroFormacion', 'area.sede.centroFormacion.locacion'],
+      relations: [
+        'area',
+        'area.sede',
+        'area.sede.centroFormacion',
+        'area.sede.centroFormacion.locacion',
+      ],
     });
     return result.map((bodega) => {
       return {
@@ -36,37 +41,47 @@ export class BodegaService {
         centroFormacionNombre: bodega.area.sede.centroFormacion?.nombre || '',
         locacionId: bodega.area.sede.centroFormacion.locacion.id,
         locacionNombre: bodega.area.sede.centroFormacion.locacion?.nombre || '',
+        totalMateriales: 30,
       };
     });
   }
+async findAllBySedes(sedeId: number): Promise<BodegaDto[]> {
+  const result = await this.bodegaRepository
+    .createQueryBuilder('bodega')
+    .leftJoinAndSelect('bodega.area', 'area')
+    .leftJoinAndSelect('area.sede', 'sede')
+    .leftJoinAndSelect('sede.centroFormacion', 'centroFormacion')
+    .leftJoinAndSelect('centroFormacion.locacion', 'locacion')
+    .leftJoin('bodega.materiales', 'material')
+    .addSelect('COALESCE(SUM(material.stok), 0)', 'totalMateriales') // 👈 suma del stok
+    .where('area.sedeId = :sedeId', { sedeId })
+    .groupBy('bodega.id')
+    .addGroupBy('area.id')
+    .addGroupBy('sede.id')
+    .addGroupBy('centroFormacion.id')
+    .addGroupBy('locacion.id')
+    .getRawAndEntities();
 
-  async findAllBySedes(sedeId: number): Promise<BodegaDto[]> {
-    const result = await this.bodegaRepository.find({
-      where: { area: { sedeId } },
-      relations: [
-        'area',
-        'area.sede',
-        'area.sede.centroFormacion',
-        'area.sede.centroFormacion.locacion',
-      ],
-    });
-    return result.map((bodega) => {
-      return {
-        id: bodega.id,
-        nombre: bodega.nombre,
-        descripcion: bodega.descripcion,
-        responsable: bodega.responsable,
-        areaId: bodega.area.id,
-        areaNombre: bodega.area?.nombre || '',
-        sedeId: bodega.area.sede.id,
-        sedeNombre: bodega.area.sede?.nombre || '',
-        centroFormacionId: bodega.area.sede.centroFormacion.id,
-        centroFormacionNombre: bodega.area.sede.centroFormacion?.nombre || '',
-        locacionId: bodega.area.sede.centroFormacion.locacion.id,
-        locacionNombre: bodega.area.sede.centroFormacion.locacion?.nombre || '',
-      };
-    });
-  }
+  return result.entities.map((bodega, index) => {
+    const raw = result.raw[index]; // aquí viene el campo calculado
+    return {
+      id: bodega.id,
+      nombre: bodega.nombre,
+      descripcion: bodega.descripcion,
+      responsable: bodega.responsable,
+      areaId: bodega.area.id,
+      areaNombre: bodega.area?.nombre || '',
+      sedeId: bodega.area.sede.id,
+      sedeNombre: bodega.area.sede?.nombre || '',
+      centroFormacionId: bodega.area.sede.centroFormacion.id,
+      centroFormacionNombre: bodega.area.sede.centroFormacion?.nombre || '',
+      locacionId: bodega.area.sede.centroFormacion.locacion.id,
+      locacionNombre: bodega.area.sede.centroFormacion.locacion?.nombre || '',
+      totalMateriales: Number(raw.totalMateriales) || 0, // 👈 aquí traes la suma del stok
+    };
+  });
+}
+
 
   async findOne(id: number): Promise<Bodega> {
     const bodega = await this.bodegaRepository.findOne({ where: { id } });

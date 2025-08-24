@@ -24,6 +24,8 @@ import { UsuariosModule } from './features/usuarios/usuarios.module';
 import { MovimientosModule } from './features/movimientos/movimientos.module';
 import { UnidadMedidaModule } from './features/unidad-medida/unidad-medida.module';
 import { AuthModule } from './features/auth/auth.module';
+import { TipoMovimientoModule } from './features/tipo-movimiento/tipo-movimiento.module';
+import { EstadisticaModule } from './features/estadistica/estadistica.module';
 
 @Module({
   imports: [
@@ -41,6 +43,7 @@ import { AuthModule } from './features/auth/auth.module';
     FichasModule,
     BodegasModule,
     MaterialesModule,
+    TipoMovimientoModule,
 
     // Security
     PermisosModule,
@@ -50,10 +53,11 @@ import { AuthModule } from './features/auth/auth.module';
     UsuariosModule,
     AuthModule,
 
-
     // Operations
     MovimientosModule,
     UnidadMedidaModule,
+    EstadisticaModule,
+    
   ],
   controllers: [],
   providers: [],

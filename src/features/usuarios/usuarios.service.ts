@@ -15,27 +15,32 @@ export class UsuariosService {
   ) {}
 
   async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
-
     const hashedContrasena = await bcrypt.hash(createUsuarioDto.contrasena, 10);
 
     const usuario = this.usuarioRepository.create({
       ...createUsuarioDto,
-      contrasena: hashedContrasena
+      contrasena: hashedContrasena,
+      rol_id: createUsuarioDto.rolId,
     });
 
     return await this.usuarioRepository.save(usuario);
   }
 
   async findAll(): Promise<UsuarioDto[]> {
-    const usuarios = await this.usuarioRepository.find();
-    return usuarios.map(usuario => {
+    const usuarios = await this.usuarioRepository.find({
+      relations: ['cargo', 'rol'],
+    });
+    return usuarios.map((usuario) => {
       return {
         id: usuario.id,
         apellidos: usuario.apellidos,
         nombres: usuario.nombres,
         correo: usuario.correo,
         cargoId: usuario.cargoId,
-        rolId: usuario.rol_id
+        rolId: usuario.rol_id,
+        fechaCreacion: usuario.fechacreacion.toISOString(),
+        cargoNombre: usuario.cargo?.nombre,
+        rolNombre: usuario.rol?.nombre,
       };
     });
   }
@@ -56,14 +61,18 @@ export class UsuariosService {
     return usuario;
   }
 
-  async update(id: number, updateUsuarioDto: UpdateUsuarioDto): Promise<Usuario> {
+  async update(
+    id: number,
+    updateUsuarioDto: UpdateUsuarioDto,
+  ): Promise<Usuario> {
     const { contrasena } = updateUsuarioDto;
     if (contrasena) {
-      updateUsuarioDto.contrasena = await bcrypt.hash(contrasena);
+      updateUsuarioDto.contrasena = await bcrypt.hash(contrasena, 10);
     }
     const usuario = await this.usuarioRepository.preload({
       id,
       ...updateUsuarioDto,
+      rol_id: updateUsuarioDto.rolId,
     });
     if (!usuario) {
       throw new NotFoundException(`Usuario #${id} not found`);

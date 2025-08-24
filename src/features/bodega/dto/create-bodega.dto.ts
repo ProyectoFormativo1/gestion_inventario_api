@@ -17,6 +17,13 @@ export class CreateBodegaDto {
   descripcion: string;
 
   @ApiProperty({
+    description: 'Responsable de la bodega',
+    example: 'Juan Pérez',
+  })
+  @IsString()
+  responsable: string;
+
+  @ApiProperty({
     description: 'Id del area a la que pertenece la bodega',
     example: 5,
   })

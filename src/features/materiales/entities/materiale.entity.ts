@@ -1,4 +1,5 @@
 import { Bodega } from 'src/features/bodega/entities/bodega.entity';
+import { Movimiento } from 'src/features/movimientos/entities/movimiento.entity';
 import { UnidadMedida } from 'src/features/unidad-medida/entities/unidad-medida.entity';
 import {
   Entity,
@@ -6,6 +7,7 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 
 @Entity('materiales')
@@ -67,4 +69,7 @@ export class Material {
   @ManyToOne(() => UnidadMedida, (unidadMedida) => unidadMedida.materiales)
   @JoinColumn({ name: 'unidad_medida_id' }) // une con la FK
   unidadMedida: UnidadMedida;
+
+  @OneToMany(() => Movimiento, (movimiento) => movimiento.responsable)
+  movimientos: Movimiento[];
 }

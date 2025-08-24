@@ -30,4 +30,18 @@ export class UsuarioDto {
         description: 'ID del rol asociado al usuario'
     })
     rolId: number;
+
+     @ApiProperty({
+        description: 'Fecha de creacion del usuario',
+    })
+     fechaCreacion: string;
+
+    @ApiProperty({
+        description: 'Nombre del cargo asociado al usuario',
+    })
+    cargoNombre?: string;
+    @ApiProperty({
+        description: 'Nombre del rol asociado al usuario',
+    })
+    rolNombre?: string;
 }

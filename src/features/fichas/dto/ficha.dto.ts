@@ -6,11 +6,25 @@ export class FichaDto {
   codigo: string;
 
   @ApiProperty({
+    description: 'Fecha de creación de la ficha',
+  })
+  fechaCreacion: string;
+
+  @ApiProperty({
     description: 'ID del programa asociado',
   })
   programaId: number;
-    
-    
+
+  @ApiProperty({
+    description: 'ID del ambiente asociado',
+  })
+  ambienteId: number;
+
+  @ApiProperty({
+    description: 'Nombre del ambiente al que pertenece la ficha',
+  })
+  ambienteNombre: string;
+
   @ApiProperty({
     description: 'Nombre del programa a la que pertenece la ficha',
   })

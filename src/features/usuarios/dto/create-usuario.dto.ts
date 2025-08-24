@@ -37,5 +37,5 @@ export class CreateUsuarioDto {
         example: 1,
     })
     @IsNumber()
-    rol_id: number;
+    rolId: number;
 }
