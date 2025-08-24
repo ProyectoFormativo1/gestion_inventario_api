@@ -1,3 +1,4 @@
+import { Ambiente } from 'src/features/ambientes/entities/ambiente.entity';
 import { Bodega } from 'src/features/bodega/entities/bodega.entity';
 import { Ficha } from 'src/features/fichas/entities/ficha.entity';
 import { Sede } from 'src/features/sedes/entities/sede.entity';
@@ -27,4 +28,9 @@ export class Area {
     // 👇 Relación con Fichas
     @OneToMany(() => Ficha, (ficha) => ficha.area)
     fichas: Ficha[];
+
+    // 👇 Relación con Ambientes
+    @OneToMany(() => Ambiente, (ambiente) => ambiente.area)
+    ambientes: Ambiente[];
+
 }

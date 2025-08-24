@@ -10,9 +10,9 @@ export class CreateAmbienteDto {
     nombre: string;
 
     @ApiProperty({
-        description: 'Id de la ficha a la que pertenece el ambiente',
+        description: 'Id del area a la que pertenece el ambiente',
         example: 3,
     })
     @IsNumber()
-    fichaId: number;
+    areaId: number;
 }

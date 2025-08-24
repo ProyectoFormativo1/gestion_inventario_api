@@ -16,13 +16,15 @@ export class BodegasController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Obtener todas las bodegas' })
   findAll() {
     return this.bodegasService.findAll();
   }
 
-  @Get('area/:areaId')
-  findAllByAreas(@Param('areaId') areaId: number) {
-    return this.bodegasService.findAllByAreas(areaId);
+  @Get('sede/:sedeId')
+  @ApiOperation({ summary: 'Obtener todas las bodegas por sede' })
+  findAllBySedes(@Param('sedeId') sedeId: number) {
+    return this.bodegasService.findAllBySedes(sedeId);
   }
 
   @Get(':id')
@@ -31,11 +33,13 @@ export class BodegasController {
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Actualizar una bodega por ID' })
   update(@Param('id') id: string, @Body() updateBodegaDto: UpdateBodegaDto) {
     return this.bodegasService.update(+id, updateBodegaDto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Eliminar una bodega por ID' })
   remove(@Param('id') id: string) {
     return this.bodegasService.remove(+id);
   }

@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Ambiente } from './entities/ambiente.entity';
 import { CreateAmbienteDto } from './dto/create-ambiente.dto';
 import { UpdateAmbienteDto } from './dto/update-ambiente.dto';
+import { AmbienteDto } from './dto/ambientes.dto';
 
 @Injectable()
 export class AmbientesService {
@@ -17,8 +18,52 @@ export class AmbientesService {
     return await this.ambienteRepository.save(ambiente);
   }
 
-  async findAll(): Promise<Ambiente[]> {
-    return await this.ambienteRepository.find();
+  async findAll(): Promise<AmbienteDto[]> {
+    const result = await this.ambienteRepository.find({
+      relations: [
+        'area', 'area.sede', 'area.sede.centroFormacion', 'area.sede.centroFormacion.locacion'
+      ],
+    });
+    return result.map((ambiente) => {
+      return {
+        id: ambiente.id,
+        nombre: ambiente.nombre,
+        areaId: ambiente.area.id,
+        areaNombre: ambiente.area?.nombre || '',
+        sedeId: ambiente.area.sede.id,
+        sedeNombre: ambiente.area.sede?.nombre || '',
+        centroFormacionId: ambiente.area.sede.centroFormacion.id,
+        centroFormacionNombre: ambiente.area.sede.centroFormacion?.nombre || '',
+        locacionId: ambiente.area.sede.centroFormacion.locacion.id,
+        locacionNombre: ambiente.area.sede.centroFormacion.locacion?.nombre || '',
+      };
+    });
+  }
+
+  async findAllByAreas(areaId: number): Promise<AmbienteDto[]> {
+    const result = await this.ambienteRepository.find({
+      where: { areaId },
+      relations: [
+        'area',
+        'area.sede',
+        'area.sede.centroFormacion',
+        'area.sede.centroFormacion.locacion',
+      ],
+    });
+    return result.map((ambiente) => {
+      return {
+        id: ambiente.id,
+        nombre: ambiente.nombre,
+        areaId: ambiente.area.id,
+        areaNombre: ambiente.area?.nombre || '',
+        sedeId: ambiente.area.sede.id,
+        sedeNombre: ambiente.area.sede?.nombre || '',
+        centroFormacionId: ambiente.area.sede.centroFormacion.id,
+        centroFormacionNombre: ambiente.area.sede.centroFormacion?.nombre || '',
+        locacionId: ambiente.area.sede.centroFormacion.locacion.id,
+        locacionNombre: ambiente.area.sede.centroFormacion.locacion?.nombre || '',
+      };
+    });
   }
 
   async findOne(id: number): Promise<Ambiente> {

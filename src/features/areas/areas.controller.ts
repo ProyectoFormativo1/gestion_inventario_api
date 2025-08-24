@@ -16,6 +16,7 @@ export class AreasController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Obtener todos los áreas' })
   findAll() {
     return this.areasService.findAll();
   }
@@ -31,11 +32,13 @@ export class AreasController {
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Actualizar un área' })
   update(@Param('id') id: string, @Body() updateAreaDto: UpdateAreaDto) {
     return this.areasService.update(+id, updateAreaDto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Eliminar un área' })
   remove(@Param('id') id: string) {
     return this.areasService.remove(+id);
   }

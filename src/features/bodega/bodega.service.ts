@@ -40,9 +40,9 @@ export class BodegaService {
     });
   }
 
-  async findAllByAreas(areaId: number): Promise<BodegaDto[]> {
+  async findAllBySedes(sedeId: number): Promise<BodegaDto[]> {
     const result = await this.bodegaRepository.find({
-      where: { areaId },
+      where: { area: { sedeId } },
       relations: [
         'area',
         'area.sede',

@@ -16,8 +16,15 @@ export class AmbientesController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Obtener todos los ambientes' })
   findAll() {
     return this.ambientesService.findAll();
+  }
+
+  @Get('area/:areaId')
+  @ApiOperation({ summary: 'Obtener todos los ambientes por área' })
+  findAllByAreas(@Param('areaId') areaId: number) {
+    return this.ambientesService.findAllByAreas(areaId);
   }
 
   @Get(':id')
@@ -26,6 +33,7 @@ export class AmbientesController {
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Actualizar un ambiente' })
   update(@Param('id') id: string, @Body() updateAmbienteDto: UpdateAmbienteDto) {
     return this.ambientesService.update(+id, updateAmbienteDto);
   }

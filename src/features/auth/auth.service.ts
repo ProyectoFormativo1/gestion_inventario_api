@@ -31,6 +31,15 @@ export class AuthService {
     const expiresIn = ExpirationUtil.parse(
       this.configService.get<string>('JWT_ACCESS_EXPIRATION')
     )
-    return { token, expiresIn };
+    return {
+      token, expiresIn, user: {
+        id: usuario.id,
+        correo: usuario.correo,
+        nombres: usuario.nombres,
+        apellidos: usuario.apellidos,
+        cargoId: usuario.cargoId,
+        rolId: usuario.rol_id
+      }
+    };
   }
 }

@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Material } from 'src/features/materiales/entities/materiale.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity('unidad_medida')
 export class UnidadMedida {
@@ -23,4 +24,8 @@ export class UnidadMedida {
 
   @Column({ nullable: true })
   descripcion?: string;
+
+  // 👇 Relación con Material
+  @OneToMany(() => Material, (material) => material.unidadMedida)
+  materiales: Material[];
 }

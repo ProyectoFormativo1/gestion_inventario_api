@@ -1,5 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Type } from "class-transformer";
 import { IsEmail, IsString } from "class-validator";
+import { UsuarioDto } from "src/features/usuarios/dto/usuario.dto";
 
 export class LoginRequestDto {
     @ApiProperty({
@@ -19,14 +21,19 @@ export class LoginRequestDto {
 
 export class LoginResponseDto {
     @ApiProperty({
-        description: 'Token de acceso del usuario',
-        example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        description: 'Token de acceso del usuario'
     })
     token: string;
 
     @ApiProperty({
-        description: 'Tiempo de expiración del token de acceso',
-        example: 1296000,
+        description: 'Tiempo de expiración del token de acceso'
     })
     expiresIn: number;
+
+    @ApiProperty({
+        description: 'Usuario'
+    })
+    @Type(() => UsuarioDto)
+    user: UsuarioDto;
+
 }

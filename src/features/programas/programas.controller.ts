@@ -16,6 +16,7 @@ export class ProgramasController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Obtener todos los programas' })
   findAll() {
     return this.programasService.findAll();
   }
@@ -26,11 +27,13 @@ export class ProgramasController {
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Actualizar un programa' })
   update(@Param('id') id: string, @Body() updateProgramaDto: UpdateProgramaDto) {
     return this.programasService.update(+id, updateProgramaDto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Eliminar un programa' })
   remove(@Param('id') id: string) {
     return this.programasService.remove(+id);
   }

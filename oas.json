@@ -153,10 +153,11 @@
           }
         },
         "responses": {
-          "201": {
+          "200": {
             "description": ""
           }
         },
+        "summary": "Iniciar sesión",
         "tags": [
           "Auth"
         ]
@@ -447,6 +448,7 @@
             "description": ""
           }
         },
+        "summary": "Obtener todas las sedes",
         "tags": [
           "Sedes"
         ]
@@ -494,6 +496,7 @@
             "description": ""
           }
         },
+        "summary": "Obtener una sede por ID",
         "tags": [
           "Sedes"
         ]
@@ -525,6 +528,7 @@
             "description": ""
           }
         },
+        "summary": "Actualizar una sede",
         "tags": [
           "Sedes"
         ]
@@ -546,6 +550,7 @@
             "description": ""
           }
         },
+        "summary": "Eliminar una sede",
         "tags": [
           "Sedes"
         ]
@@ -583,6 +588,7 @@
             "description": ""
           }
         },
+        "summary": "Obtener todos los áreas",
         "tags": [
           "Areas"
         ]
@@ -661,6 +667,7 @@
             "description": ""
           }
         },
+        "summary": "Actualizar un área",
         "tags": [
           "Areas"
         ]
@@ -682,6 +689,7 @@
             "description": ""
           }
         },
+        "summary": "Eliminar un área",
         "tags": [
           "Areas"
         ]
@@ -719,6 +727,7 @@
             "description": ""
           }
         },
+        "summary": "Obtener todos los programas",
         "tags": [
           "Programas"
         ]
@@ -773,6 +782,7 @@
             "description": ""
           }
         },
+        "summary": "Actualizar un programa",
         "tags": [
           "Programas"
         ]
@@ -794,6 +804,7 @@
             "description": ""
           }
         },
+        "summary": "Eliminar un programa",
         "tags": [
           "Programas"
         ]
@@ -831,6 +842,31 @@
             "description": ""
           }
         },
+        "summary": "Obtener todos los ambientes",
+        "tags": [
+          "Ambientes"
+        ]
+      }
+    },
+    "/api/ambientes/area/{areaId}": {
+      "get": {
+        "operationId": "AmbientesController_findAllByAreas",
+        "parameters": [
+          {
+            "name": "areaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Obtener todos los ambientes por área",
         "tags": [
           "Ambientes"
         ]
@@ -885,6 +921,7 @@
             "description": ""
           }
         },
+        "summary": "Actualizar un ambiente",
         "tags": [
           "Ambientes"
         ]
@@ -1078,17 +1115,18 @@
             "description": ""
           }
         },
+        "summary": "Obtener todas las bodegas",
         "tags": [
           "Bodegas"
         ]
       }
     },
-    "/api/bodega/area/{areaId}": {
+    "/api/bodega/sede/{sedeId}": {
       "get": {
-        "operationId": "BodegasController_findAllByAreas",
+        "operationId": "BodegasController_findAllBySedes",
         "parameters": [
           {
-            "name": "areaId",
+            "name": "sedeId",
             "required": true,
             "in": "path",
             "schema": {
@@ -1101,6 +1139,7 @@
             "description": ""
           }
         },
+        "summary": "Obtener todas las bodegas por sede",
         "tags": [
           "Bodegas"
         ]
@@ -1155,6 +1194,7 @@
             "description": ""
           }
         },
+        "summary": "Actualizar una bodega por ID",
         "tags": [
           "Bodegas"
         ]
@@ -1176,6 +1216,7 @@
             "description": ""
           }
         },
+        "summary": "Eliminar una bodega por ID",
         "tags": [
           "Bodegas"
         ]
@@ -1200,6 +1241,7 @@
             "description": ""
           }
         },
+        "summary": "Crear un nuevo material",
         "tags": [
           "Materiales"
         ]
@@ -1212,6 +1254,31 @@
             "description": ""
           }
         },
+        "summary": "Obtener todos los materiales",
+        "tags": [
+          "Materiales"
+        ]
+      }
+    },
+    "/api/materiales/bodega/{bodegaId}": {
+      "get": {
+        "operationId": "MaterialesController_findAllByBodegaId",
+        "parameters": [
+          {
+            "name": "bodegaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Obtener materiales por ID de bodega",
         "tags": [
           "Materiales"
         ]
@@ -2278,15 +2345,15 @@
             "description": "Nombre del ambiente",
             "example": "Y151"
           },
-          "fichaId": {
+          "areaId": {
             "type": "number",
-            "description": "Id de la ficha a la que pertenece el ambiente",
+            "description": "Id del area a la que pertenece el ambiente",
             "example": 3
           }
         },
         "required": [
           "nombre",
-          "fichaId"
+          "areaId"
         ]
       },
       "UpdateAmbienteDto": {
@@ -2297,9 +2364,9 @@
             "description": "Nombre del ambiente",
             "example": "Y151"
           },
-          "fichaId": {
+          "areaId": {
             "type": "number",
-            "description": "Id de la ficha a la que pertenece el ambiente",
+            "description": "Id del area a la que pertenece el ambiente",
             "example": 3
           }
         }
@@ -2357,6 +2424,11 @@
             "description": "Nombre de la bodega",
             "example": "TIC"
           },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción de la bodega",
+            "example": "Bodega de Tecnologías de la Información y Comunicaciones"
+          },
           "areaId": {
             "type": "number",
             "description": "Id del area a la que pertenece la bodega",
@@ -2365,6 +2437,7 @@
         },
         "required": [
           "nombre",
+          "descripcion",
           "areaId"
         ]
       },
@@ -2375,6 +2448,11 @@
             "type": "string",
             "description": "Nombre de la bodega",
             "example": "TIC"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción de la bodega",
+            "example": "Bodega de Tecnologías de la Información y Comunicaciones"
           },
           "areaId": {
             "type": "number",

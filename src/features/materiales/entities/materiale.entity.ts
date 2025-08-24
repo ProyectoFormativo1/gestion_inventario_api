@@ -1,4 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Bodega } from 'src/features/bodega/entities/bodega.entity';
+import { UnidadMedida } from 'src/features/unidad-medida/entities/unidad-medida.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 
 @Entity('materiales')
 export class Material {
@@ -31,7 +39,7 @@ export class Material {
 
   @Column({ type: 'timestamp' })
   fecha_vencimiento: Date;
-  
+
   @Column({ type: 'timestamp' })
   fecha_vigencia: Date;
 
@@ -49,4 +57,14 @@ export class Material {
 
   @Column({ name: 'unidad_medida_id' })
   unidad_medida_id: number;
+
+  // 👇 Relación con Bodega
+  @ManyToOne(() => Bodega, (bodega) => bodega.materiales)
+  @JoinColumn({ name: 'bodega_id' }) // une con la FK
+  bodega: Bodega;
+
+  // 👇 Relación con Unidad de Medida
+  @ManyToOne(() => UnidadMedida, (unidadMedida) => unidadMedida.materiales)
+  @JoinColumn({ name: 'unidad_medida_id' }) // une con la FK
+  unidadMedida: UnidadMedida;
 }

@@ -16,6 +16,7 @@ export class SedesController {
   }
 
   @Get()
+  @ApiOperation({ summary: 'Obtener todas las sedes' })
   findAll() {
     return this.sedesService.findAll();
   }
@@ -27,16 +28,19 @@ export class SedesController {
   }
   
   @Get(':id')
+  @ApiOperation({ summary: 'Obtener una sede por ID' })
   findOne(@Param('id') id: string) {
     return this.sedesService.findOne(+id);
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Actualizar una sede' })
   update(@Param('id') id: string, @Body() updateSedeDto: UpdateSedeDto) {
     return this.sedesService.update(+id, updateSedeDto);
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Eliminar una sede' })
   remove(@Param('id') id: string) {
     return this.sedesService.remove(+id);
   }

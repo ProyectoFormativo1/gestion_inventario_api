@@ -15,10 +15,15 @@ async function bootstrap() {
   app.setGlobalPrefix("api")
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,
+      whitelist: false, // Si esta en true => Solo permite las propiedades que estén definidas en el DTO.
       forbidNonWhitelisted: true
     })
   )
+   app.enableCors({
+    origin: '*', // todos los origenes
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
   setupSwagger(app);
   await app.listen(process.env.PORT ?? 3000);
 }

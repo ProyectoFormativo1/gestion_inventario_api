@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Material } from './entities/materiale.entity';
 import { CreateMaterialDto} from './dto/create-materiale.dto';
 import { UpdateMaterialeDto} from './dto/update-materiale.dto';
+import { MaterialDto } from './dto/material.dto';
 
 @Injectable()
 export class MaterialesService {
@@ -19,8 +20,56 @@ export class MaterialesService {
     return await this.materialRepository.save(material);
   }
 
-  async findAll(): Promise<Material[]> {
-    return await this.materialRepository.find();
+  async findAll(): Promise<MaterialDto[]> {
+    const result = await this.materialRepository.find({
+      relations: ['bodega', 'unidadMedida'],
+    });
+    return result.map(material => {
+      return {
+        id: material.id,
+        nombre: material.nombre,
+        bodegaNombre: material.bodega?.nombre,
+        unidadMedidaNombre: material.unidadMedida?.nombre,
+        bodega_id: material.bodega_id,
+        unidad_medida_id: material.unidad_medida_id,
+        codigo_sena: material.codigo_sena,
+        codigo_unspsc: material.codigo_unspsc,
+        tipo: material.tipo,
+        numero_contrato: material.numero_contrato,
+        stok: material.stok,
+        fecha_vencimiento: material?.fecha_vencimiento?.toISOString(),
+        fecha_vigencia: material?.fecha_vigencia?.toISOString(),
+        fecha_creacion: material?.fecha_creacion?.toISOString(),
+        fecha_actualizacion: material?.fecha_actualizacion?.toISOString(),
+      }
+    });
+  }
+
+  async findAllByBodegaId(bodegaId: number): Promise<MaterialDto[]> {
+    const result = await this.materialRepository.find({
+      relations: ['bodega', 'unidadMedida'],
+      where: { bodega_id: bodegaId },
+    });
+    return result.map(material => {
+      return {
+        id: material.id,
+        nombre: material.nombre,
+        bodegaNombre: material.bodega?.nombre,
+        unidadMedidaNombre: material.unidadMedida?.nombre,
+        bodega_id: material.bodega_id,
+        unidad_medida_id: material.unidad_medida_id,
+        codigo_sena: material.codigo_sena,
+        codigo_unspsc: material.codigo_unspsc,
+        tipo: material.tipo,
+        numero_contrato: material.numero_contrato,
+        stok: material.stok,
+        fecha_vencimiento: material?.fecha_vencimiento?.toISOString(),
+        fecha_vigencia: material?.fecha_vigencia?.toISOString(),
+        fecha_creacion: material?.fecha_creacion?.toISOString(),
+        fecha_actualizacion: material?.fecha_actualizacion?.toISOString(),
+      }
+    });
+
   }
 
   async findOne(id: number): Promise<Material> {
