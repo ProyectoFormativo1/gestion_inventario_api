@@ -1,28 +1,27 @@
 import { Injectable } from '@nestjs/common';
-import { MovimientosService } from '../movimientos/movimientos.service';
-import { MaterialesService } from '../materiales/materiales.service';
+import { MovimientoReporteService } from '../movimientos/movimiento-reporte.service';
+import { MaterialesReporteService } from '../materiales/materiales-reporte.service';
 
 @Injectable()
 export class EstadisticaService {
 
   constructor(
-    private readonly movimientosService: MovimientosService,
-    private readonly materialesService: MaterialesService,
+    private readonly movimientoReporteService: MovimientoReporteService,
+    private readonly materialesReporteService: MaterialesReporteService,
   ) {}
 
   async findAll() {
-    const materiales = await this.materialesService.getMaterialStats();
-    const proximosAVencer = await this.materialesService.findProximosAVencer();
-    const reabastecimientos = await this.materialesService.countReabastecimiento();
-    const movimientosHoy = await this.movimientosService.findTodayMovimientos();
-
-    const movimientos = await this.movimientosService.countByMonth();
+    const materiales = await this.materialesReporteService.getMaterialStats();
+    const proximosAVencer = await this.materialesReporteService.findProximosAVencer();
+    const reabastecimientos = await this.materialesReporteService.countReabastecimiento();
+    const movimientosHoy = await this.movimientoReporteService.findTodayMovimientos();
+    const movimientosAnioActual = await this.movimientoReporteService.countByMonth();
     return {
       materiales: materiales,
       proximosAVencer: proximosAVencer,
       reabastecimientos: reabastecimientos,
       movimientosHoy: movimientosHoy,
-      movimientos: movimientos,
+      movimientosAnioActual: movimientosAnioActual,
     };
   }
 
