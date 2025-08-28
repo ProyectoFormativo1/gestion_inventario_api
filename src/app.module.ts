@@ -26,6 +26,7 @@ import { UnidadMedidaModule } from './features/unidad-medida/unidad-medida.modul
 import { AuthModule } from './features/auth/auth.module';
 import { TipoMovimientoModule } from './features/tipo-movimiento/tipo-movimiento.module';
 import { EstadisticaModule } from './features/estadistica/estadistica.module';
+import { CategoriaModule } from './features/categorias/categorias.module';
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { EstadisticaModule } from './features/estadistica/estadistica.module';
     MovimientosModule,
     UnidadMedidaModule,
     EstadisticaModule,
+    CategoriaModule,
     
   ],
   controllers: [],

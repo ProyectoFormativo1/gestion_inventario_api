@@ -102,3 +102,78 @@ INSERT INTO public.tipo_movimiento (codigo, descripcion, tipo) VALUES
 
 ALTER TABLE public.salidas
     ADD CONSTRAINT salidas_movimiento_id_unique UNIQUE (movimiento_id);
+
+
+---Cambios 27 Agosto 2025
+
+--Permisos del Modulo de Ciudad
+ciudad-table-lista
+ciudad-btn-crear
+ciudad-btn-eliminar
+ciudad-btn-editar
+--Permisos del Modulo de CentroFormacion
+centroformacion-table-lista
+centroformacion-btn-crear
+centroformacion-btn-eliminar
+centroformacion-btn-editar
+--Permisos del Modulo de sedes
+sedes-table-lista
+sedes-btn-crear
+sedes-btn-eliminar
+sedes-btn-editar
+--Permisos del Modulo de areas
+areas-table-lista
+areas-btn-crear
+areas-btn-eliminar
+areas-btn-editar
+--Permisos del Modulo de programas
+programas-table-lista
+programas-btn-crear
+programas-btn-eliminar
+programas-btn-editar
+--Permisos del Modulo de fichas
+fichas-table-lista
+fichas-btn-crear
+fichas-btn-eliminar
+fichas-btn-editar
+--Permisos del Modulo de ambientes
+ambientes-table-lista
+ambientes-btn-crear
+ambientes-btn-eliminar
+ambientes-btn-editar
+--Permisos del Modulo de usuarios
+usuarios-table-lista
+usuarios-btn-crear
+usuarios-btn-eliminar
+usuarios-btn-editar
+--Permisos del Modulo de bodega
+bodega-table-lista
+bodega-btn-ver
+bodega-btn-crear
+bodega-btn-eliminar
+bodega-btn-editar
+--Permisos del Modulo de materiales
+materiales-table-lista
+materiales-btn-crear
+materiales-btn-eliminar
+materiales-btn-editar
+--Permisos del Modulo de categoria
+categoria-table-lista
+categoria-btn-crear
+categoria-btn-eliminar
+categoria-btn-editar
+--Permisos del Modulo de movimientos
+movimientos-btn-crear
+movimientos-btn-eliminar
+movimientos-btn-editar
+--Permisos del Modulo de roles
+roles-table-lista
+roles-btn-permiso
+roles-btn-crear
+roles-btn-eliminar
+roles-btn-editar
+--Permisos del Modulo de cargo
+cargo-table-lista
+cargo-btn-crear
+cargo-btn-eliminar
+cargo-btn-editar
