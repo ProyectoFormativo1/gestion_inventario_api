@@ -72,4 +72,5 @@ export class Material {
 
   @OneToMany(() => Movimiento, (movimiento) => movimiento.responsable)
   movimientos: Movimiento[];
+    categoria: any;
 }
