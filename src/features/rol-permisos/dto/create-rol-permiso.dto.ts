@@ -5,7 +5,4 @@ export class CreateRolPermisoDto {
 
     @IsNumber()
     permisoId: number;
-
-     @IsDateString()
-    fecha: string;
 }

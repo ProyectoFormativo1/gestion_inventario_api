@@ -1,4 +1,5 @@
 import { Bodega } from 'src/features/bodega/entities/bodega.entity';
+import { Categoria } from 'src/features/categorias/entities/categoria.entity';
 import { Movimiento } from 'src/features/movimientos/entities/movimiento.entity';
 import { UnidadMedida } from 'src/features/unidad-medida/entities/unidad-medida.entity';
 import {
@@ -49,9 +50,6 @@ export class Material {
   codigo_sena: string;
 
   @Column()
-  codigo_unspsc: string;
-
-  @Column()
   tipo: string;
 
   @Column({ name: 'bodega_id' })
@@ -59,6 +57,9 @@ export class Material {
 
   @Column({ name: 'unidad_medida_id' })
   unidad_medida_id: number;
+
+  @Column({ name: 'categoria_id' })
+  categoria_id: number;
 
   // 👇 Relación con Bodega
   @ManyToOne(() => Bodega, (bodega) => bodega.materiales)
@@ -72,5 +73,8 @@ export class Material {
 
   @OneToMany(() => Movimiento, (movimiento) => movimiento.responsable)
   movimientos: Movimiento[];
-    categoria: any;
+
+  @ManyToOne(() => Categoria, (categoria) => categoria.materiales)
+  @JoinColumn({ name: 'categoria_id' }) // une con la FK
+  categoria: Categoria;
 }

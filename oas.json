@@ -1396,107 +1396,9 @@
       }
     },
     "/api/permisos": {
-      "post": {
-        "operationId": "PermisosController_create",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreatePermisoDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": ""
-          }
-        },
-        "summary": "Crear un nuevo permiso",
-        "tags": [
-          "Permisos"
-        ]
-      },
       "get": {
         "operationId": "PermisosController_findAll",
         "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Permisos"
-        ]
-      }
-    },
-    "/api/permisos/{id}": {
-      "get": {
-        "operationId": "PermisosController_findOne",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Permisos"
-        ]
-      },
-      "patch": {
-        "operationId": "PermisosController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdatePermisoDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "Permisos"
-        ]
-      },
-      "delete": {
-        "operationId": "PermisosController_remove",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": ""
@@ -1753,82 +1655,50 @@
         "tags": [
           "RolPermisos"
         ]
-      },
+      }
+    },
+    "/api/rol-permisos/rol/{rolId}": {
       "get": {
-        "operationId": "RolPermisosController_findAll",
-        "parameters": [],
+        "operationId": "RolPermisosController_findAllByRol",
+        "parameters": [
+          {
+            "name": "rolId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": ""
           }
         },
+        "summary": "Obtener permisos del rol",
         "tags": [
           "RolPermisos"
         ]
       }
     },
-    "/api/rol-permisos/{id}": {
-      "get": {
-        "operationId": "RolPermisosController_findOne",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "RolPermisos"
-        ]
-      },
-      "patch": {
-        "operationId": "RolPermisosController_update",
-        "parameters": [
-          {
-            "name": "id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateRolPermisoDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "RolPermisos"
-        ]
-      },
+    "/api/rol-permisos/{rolId}/{permisoId}": {
       "delete": {
         "operationId": "RolPermisosController_remove",
         "parameters": [
           {
-            "name": "id",
+            "name": "rolId",
             "required": true,
             "in": "path",
             "schema": {
-              "type": "string"
+              "type": "number"
+            }
+          },
+          {
+            "name": "permisoId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
             }
           }
         ],
@@ -2077,6 +1947,122 @@
         },
         "tags": [
           "Estadistica"
+        ]
+      }
+    },
+    "/api/categoria": {
+      "post": {
+        "operationId": "CategoriaController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCategoriaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear una nueva categoría",
+        "tags": [
+          "categoria"
+        ]
+      },
+      "get": {
+        "operationId": "CategoriaController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Devuelve todas las categorías",
+        "tags": [
+          "categoria"
+        ]
+      }
+    },
+    "/api/categoria/{id}": {
+      "get": {
+        "operationId": "CategoriaController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Devuelve una categoría por ID",
+        "tags": [
+          "categoria"
+        ]
+      },
+      "patch": {
+        "operationId": "CategoriaController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCategoriaDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Actualizar una categoría",
+        "tags": [
+          "categoria"
+        ]
+      },
+      "delete": {
+        "operationId": "CategoriaController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Eliminar una categoría",
+        "tags": [
+          "categoria"
         ]
       }
     }
@@ -2555,11 +2541,6 @@
             "description": "Código SENA del material",
             "example": "SENA12345"
           },
-          "codigo_unspsc": {
-            "type": "string",
-            "description": "Código UNSPSC del material",
-            "example": "30111506"
-          },
           "tipo": {
             "type": "string",
             "description": "Tipo de material",
@@ -2574,6 +2555,11 @@
             "type": "number",
             "description": "ID de la unidad de medida",
             "example": 1
+          },
+          "categoria_id": {
+            "type": "number",
+            "description": "ID de la categoría del material",
+            "example": 1
           }
         },
         "required": [
@@ -2581,10 +2567,10 @@
           "stok",
           "numero_contrato",
           "codigo_sena",
-          "codigo_unspsc",
           "tipo",
           "bodega_id",
-          "unidad_medida_id"
+          "unidad_medida_id",
+          "categoria_id"
         ]
       },
       "UpdateMaterialeDto": {
@@ -2620,11 +2606,6 @@
             "description": "Código SENA del material",
             "example": "SENA12345"
           },
-          "codigo_unspsc": {
-            "type": "string",
-            "description": "Código UNSPSC del material",
-            "example": "30111506"
-          },
           "tipo": {
             "type": "string",
             "description": "Tipo de material",
@@ -2638,6 +2619,11 @@
           "unidad_medida_id": {
             "type": "number",
             "description": "ID de la unidad de medida",
+            "example": 1
+          },
+          "categoria_id": {
+            "type": "number",
+            "description": "ID de la categoría del material",
             "example": 1
           }
         }
@@ -2666,40 +2652,6 @@
           "descripcion",
           "tipo"
         ]
-      },
-      "CreatePermisoDto": {
-        "type": "object",
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "description": "Nombre del permiso",
-            "example": "Acceso a inventario"
-          },
-          "descripcion": {
-            "type": "string",
-            "description": "Descripción del permiso",
-            "example": "Permiso para acceder a la gestión de inventario"
-          }
-        },
-        "required": [
-          "nombre",
-          "descripcion"
-        ]
-      },
-      "UpdatePermisoDto": {
-        "type": "object",
-        "properties": {
-          "nombre": {
-            "type": "string",
-            "description": "Nombre del permiso",
-            "example": "Acceso a inventario"
-          },
-          "descripcion": {
-            "type": "string",
-            "description": "Descripción del permiso",
-            "example": "Permiso para acceder a la gestión de inventario"
-          }
-        }
       },
       "CreateCargoDto": {
         "type": "object",
@@ -2759,10 +2711,6 @@
         }
       },
       "CreateRolPermisoDto": {
-        "type": "object",
-        "properties": {}
-      },
-      "UpdateRolPermisoDto": {
         "type": "object",
         "properties": {}
       },
@@ -2885,6 +2833,40 @@
             "type": "string",
             "description": "Descripción adicional de la unidad de medida",
             "example": "Unidad utilizada para medir distancias"
+          }
+        }
+      },
+      "CreateCategoriaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la categoría",
+            "example": "Herramientas"
+          },
+          "codigoUnspsc": {
+            "type": "string",
+            "description": "Código UNSPSC de la categoría",
+            "example": "12345678"
+          }
+        },
+        "required": [
+          "nombre",
+          "codigoUnspsc"
+        ]
+      },
+      "UpdateCategoriaDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre de la categoría",
+            "example": "Herramientas"
+          },
+          "codigoUnspsc": {
+            "type": "string",
+            "description": "Código UNSPSC de la categoría",
+            "example": "12345678"
           }
         }
       }

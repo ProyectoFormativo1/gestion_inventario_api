@@ -39,7 +39,10 @@ export class AuthService {
         nombres: usuario.nombres,
         apellidos: usuario.apellidos,
         cargoId: usuario.cargoId,
-        rolId: usuario.rol_id
+        rolId: usuario.rol_id,
+        cargoNombre: usuario.cargo?.nombre,
+        rolNombre: usuario.rol?.nombre,
+        permisos: usuario.rol?.rolPermisos?.map(rp => rp.permiso.nombre) || [],
       }
     };
   }

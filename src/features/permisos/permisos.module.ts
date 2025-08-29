@@ -10,5 +10,6 @@ import { Permiso } from './entities/permiso.entity';
   ],
   controllers: [PermisosController],
   providers: [PermisosService],
+  exports: [PermisosService],
 })
 export class PermisosModule {}

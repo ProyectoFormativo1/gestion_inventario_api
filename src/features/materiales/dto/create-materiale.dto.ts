@@ -49,13 +49,6 @@ export class CreateMaterialDto {
   codigo_sena: string;
 
   @ApiProperty({
-    description: 'Código UNSPSC del material',
-    example: '30111506',
-  })
-  @IsString()
-  codigo_unspsc: string;
-
-  @ApiProperty({
     description: 'Tipo de material',
     example: 'consumible',
   })
@@ -75,4 +68,11 @@ export class CreateMaterialDto {
   })
   @IsNumber()
   unidad_medida_id: number;
+
+  @ApiProperty({
+    description: 'ID de la categoría del material',
+    example: 1,
+  })
+  @IsNumber()
+  categoria_id: number;
 }

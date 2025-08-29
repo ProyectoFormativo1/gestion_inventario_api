@@ -22,7 +22,7 @@ export class MaterialesService {
 
   async findAll(): Promise<MaterialDto[]> {
     const result = await this.materialRepository.find({
-      relations: ['bodega', 'unidadMedida'],
+      relations: ['bodega', 'unidadMedida', 'categoria'],
     });
     return result.map(material => {
       return {
@@ -33,7 +33,6 @@ export class MaterialesService {
         bodega_id: material.bodega_id,
         unidad_medida_id: material.unidad_medida_id,
         codigo_sena: material.codigo_sena,
-        codigo_unspsc: material.codigo_unspsc,
         tipo: material.tipo,
         numero_contrato: material.numero_contrato,
         stok: material.stok,
@@ -41,13 +40,16 @@ export class MaterialesService {
         fecha_vigencia: material?.fecha_vigencia?.toISOString(),
         fecha_creacion: material?.fecha_creacion?.toISOString(),
         fecha_actualizacion: material?.fecha_actualizacion?.toISOString(),
+        categoria_id: material.categoria_id,
+        categoriaNombre: material.categoria?.nombre,
+        codigo_unspsc: material.categoria?.codigoUnspsc
       }
     });
   }
 
   async findAllByBodegaId(bodegaId: number): Promise<MaterialDto[]> {
     const result = await this.materialRepository.find({
-      relations: ['bodega', 'unidadMedida'],
+      relations: ['bodega', 'unidadMedida', 'categoria'],
       where: { bodega_id: bodegaId },
     });
     return result.map(material => {
@@ -59,7 +61,6 @@ export class MaterialesService {
         bodega_id: material.bodega_id,
         unidad_medida_id: material.unidad_medida_id,
         codigo_sena: material.codigo_sena,
-        codigo_unspsc: material.codigo_unspsc,
         tipo: material.tipo,
         numero_contrato: material.numero_contrato,
         stok: material.stok,
@@ -67,6 +68,9 @@ export class MaterialesService {
         fecha_vigencia: material?.fecha_vigencia?.toISOString(),
         fecha_creacion: material?.fecha_creacion?.toISOString(),
         fecha_actualizacion: material?.fecha_actualizacion?.toISOString(),
+        categoria_id: material.categoria_id,
+        categoriaNombre: material.categoria?.nombre,
+        codigo_unspsc: material.categoria?.codigoUnspsc
       }
     });
 

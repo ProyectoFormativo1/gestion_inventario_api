@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Locacion } from './entities/locacion.entity';
 import { CreateLocacionDto } from './dto/create-locacion.dto';
 import { UpdateLocacionDto } from './dto/update-locacion.dto';
+import { LocacionDto } from './dto/locacion.dto';
 
 @Injectable()
 export class LocacionService {
@@ -17,8 +18,21 @@ export class LocacionService {
     return await this.locacionRepository.save(locacion);
   }
 
-  async findAll(): Promise<Locacion[]> {
-    return await this.locacionRepository.find();
+  async findAll(): Promise<LocacionDto[]> {
+    const result = await this.locacionRepository.find({
+      relations: ['parent'],
+    });
+
+    return result.map((locacion) => {
+      return {
+        id: locacion.id,
+        nombre: locacion.nombre,
+        tipo: locacion.tipo,
+        codigoPostal: locacion.codigoPostal,
+        parentNombre: locacion.parent?.nombre,
+        parentId: locacion.parentId,
+      };
+    });
   }
 
   async findOne(id: number): Promise<Locacion> {
@@ -29,7 +43,10 @@ export class LocacionService {
     return locacion;
   }
 
-  async update(id: number, updateLocacionDto: UpdateLocacionDto): Promise<Locacion> {
+  async update(
+    id: number,
+    updateLocacionDto: UpdateLocacionDto,
+  ): Promise<Locacion> {
     const locacion = await this.locacionRepository.preload({
       id,
       ...updateLocacionDto,

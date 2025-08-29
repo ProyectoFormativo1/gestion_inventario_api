@@ -47,11 +47,6 @@ export class MaterialDto {
   codigo_sena: string;
 
   @ApiProperty({
-    description: 'Código UNSPSC del material',
-  })
-  codigo_unspsc: string;
-
-  @ApiProperty({
     description: 'Tipo de material',
   })
   tipo: string;
@@ -75,4 +70,19 @@ export class MaterialDto {
     description: 'Nombre de la bodega donde se almacena',
   })
   bodegaNombre: string;
+
+  @ApiProperty({
+    description: 'ID de la categoría del material',
+  })
+  categoria_id?: number;
+
+  @ApiProperty({
+    description: 'Nombre de la categoría del material',
+  })
+  categoriaNombre?: string;
+
+   @ApiProperty({
+    description: 'Código UNSPSC del material',
+  })
+  codigo_unspsc?: string;
 }
