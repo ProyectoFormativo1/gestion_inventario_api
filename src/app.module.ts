@@ -27,6 +27,7 @@ import { AuthModule } from './features/auth/auth.module';
 import { TipoMovimientoModule } from './features/tipo-movimiento/tipo-movimiento.module';
 import { EstadisticaModule } from './features/estadistica/estadistica.module';
 import { CategoriaModule } from './features/categorias/categorias.module';
+import { PerritoModule } from './features/perrito/perrito.module';
 
 @Module({
   imports: [
@@ -59,6 +60,7 @@ import { CategoriaModule } from './features/categorias/categorias.module';
     UnidadMedidaModule,
     EstadisticaModule,
     CategoriaModule,
+    PerritoModule,
     
   ],
   controllers: [],

@@ -2065,6 +2065,122 @@
           "categoria"
         ]
       }
+    },
+    "/api/perrito": {
+      "post": {
+        "operationId": "PerritoController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePerritoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "summary": "Crear un nuevo perrito",
+        "tags": [
+          "Perrito"
+        ]
+      },
+      "get": {
+        "operationId": "PerritoController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Obtener todos los perritos",
+        "tags": [
+          "Perrito"
+        ]
+      }
+    },
+    "/api/perrito/{id}": {
+      "get": {
+        "operationId": "PerritoController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Obtener un perrito por ID",
+        "tags": [
+          "Perrito"
+        ]
+      },
+      "patch": {
+        "operationId": "PerritoController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePerritoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Actualizar un perrito",
+        "tags": [
+          "Perrito"
+        ]
+      },
+      "delete": {
+        "operationId": "PerritoController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Eliminar un perrito",
+        "tags": [
+          "Perrito"
+        ]
+      }
     }
   },
   "info": {
@@ -2867,6 +2983,40 @@
             "type": "string",
             "description": "Código UNSPSC de la categoría",
             "example": "12345678"
+          }
+        }
+      },
+      "CreatePerritoDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del perrito",
+            "example": "Benyi"
+          },
+          "color": {
+            "type": "string",
+            "description": "Color del perrito",
+            "example": "negro"
+          }
+        },
+        "required": [
+          "nombre",
+          "color"
+        ]
+      },
+      "UpdatePerritoDto": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del perrito",
+            "example": "Benyi"
+          },
+          "color": {
+            "type": "string",
+            "description": "Color del perrito",
+            "example": "negro"
           }
         }
       }
